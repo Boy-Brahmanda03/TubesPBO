@@ -257,7 +257,16 @@ public class RegisterFrame extends javax.swing.JFrame {
         } 
         else if (!samapass) {
             JOptionPane.showMessageDialog(null, "Password Berbeda");
+        } 
+        else if (regisuserName.length() == 0) {
+            detectWrong.setText("Kolom Username Kosong!");
         }
+        else if (regispassword.length() == 0) {
+            detectWrong.setText("Kolom Password Kosong!");
+        }
+        else if (regishpUser.length() == 0) {
+             detectWrong.setText("Kolom Handphone Kosong!");
+        }       
         else {
             try{
                 Connection konekDatabase = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db_apotikMedikaSentoasa", "root", "kadekmontana050703");
