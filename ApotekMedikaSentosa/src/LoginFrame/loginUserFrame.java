@@ -4,7 +4,7 @@
  */
 package LoginFrame;
 
-import DashboardFrame.dashboardUserFrame;
+import DashboardFrame.newDasboardUser;
 import RegisterFrame.*;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -47,7 +47,7 @@ public class loginUserFrame extends javax.swing.JFrame {
         loginpassField = new javax.swing.JPasswordField();
         registerLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        forgotPass = new javax.swing.JLabel();
         createAccount = new javax.swing.JLabel();
         loginAsAdmin = new javax.swing.JLabel();
 
@@ -99,8 +99,8 @@ public class loginUserFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Forgot password?");
+        forgotPass.setForeground(new java.awt.Color(255, 255, 255));
+        forgotPass.setText("Forgot password?");
 
         createAccount.setForeground(new java.awt.Color(255, 255, 255));
         createAccount.setText("Don't have an account? ");
@@ -141,7 +141,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                         .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(backFormPanelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         backFormPanelLayout.setVerticalGroup(
@@ -152,7 +152,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,9 +210,9 @@ public class loginUserFrame extends javax.swing.JFrame {
         String userName = unameField.getText();
         String password = loginpassField.getText();
         try{
-            Connection konekDatabase = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db_apotikMedikaSentoasa", "root", "kadekmontana050703");
+            Connection konekDatabase = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_tubesPBO", "root", "kadekmontana050703");
             
-            PreparedStatement konekstatement = (PreparedStatement) konekDatabase.prepareStatement("Select user_name, pass_user from tb_user where user_name=? and pass_user=?");
+            PreparedStatement konekstatement = konekDatabase.prepareStatement("Select nama_user, password_user from tb_user where nama_user=? and password_user=?");
             
             konekstatement.setString(1, userName);
             konekstatement.setString(2, password);
@@ -221,7 +221,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You have successfully logged in");
                 sessionLogin.set_nama(userName);
                 dispose();
-                dashboardUserFrame masukDashboard = new dashboardUserFrame();
+                newDasboardUser masukDashboard = new newDasboardUser();
                 masukDashboard.show();
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong Username & Password");
@@ -292,8 +292,8 @@ public class loginUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel backFormPanel;
     private LoginFrame.bgPanel bgPanel2;
     private javax.swing.JLabel createAccount;
+    private javax.swing.JLabel forgotPass;
     private javax.swing.JPanel formPanel;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel loginAsAdmin;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField loginpassField;

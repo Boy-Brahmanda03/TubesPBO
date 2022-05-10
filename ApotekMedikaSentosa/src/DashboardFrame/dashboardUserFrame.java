@@ -37,6 +37,10 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuPop = new javax.swing.JPopupMenu();
+        dashbor = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jLabel4 = new javax.swing.JLabel();
         bgPanel1 = new DashboardFrame.bgPanel();
         headerPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
@@ -56,6 +60,14 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         productHighlightPanel1 = new javax.swing.JPanel();
+
+        dashbor.setText("jMenu1");
+        menuPop.add(dashbor);
+
+        jMenu1.setText("jMenu1");
+        menuPop.add(jMenu1);
+
+        jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -107,7 +119,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        popPanel.setBackground(new java.awt.Color(204, 204, 204));
+        popPanel.setBackground(new java.awt.Color(255, 255, 255));
         popPanel.setOpaque(false);
         popPanel.setLayout(new javax.swing.BoxLayout(popPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -434,12 +446,16 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JLabel contactusLabel;
     private javax.swing.JPanel contactusPanel;
+    private javax.swing.JMenu dashbor;
     private javax.swing.JLabel hamMenu;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel logoLabel;
+    private javax.swing.JPopupMenu menuPop;
     private javax.swing.JLabel namaSession;
     private javax.swing.JPanel popPanel;
     private javax.swing.JPanel productHighlightPanel;

@@ -4,13 +4,13 @@
  */
 package RegisterFrame;
 
+import Database.KonekDatabase;
 import LoginFrame.loginUserFrame;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -35,36 +35,67 @@ public class RegisterFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgPanel2 = new LoginFrame.bgPanel();
+        BgPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
         dasarForm = new javax.swing.JPanel();
+        registerLabel = new javax.swing.JLabel();
         backLoginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
-        headPanel = new javax.swing.JPanel();
-        registerLabel = new javax.swing.JLabel();
         formPanel = new javax.swing.JPanel();
+        namaKet = new javax.swing.JLabel();
+        namaField = new javax.swing.JTextField();
+        hpKet = new javax.swing.JLabel();
+        nohpFIeld = new javax.swing.JTextField();
+        jenisKelaminKet = new javax.swing.JLabel();
+        jenisKelamin = new javax.swing.JComboBox<>();
+        tgllahirKet = new javax.swing.JLabel();
+        tgllahirChooser = new com.toedter.calendar.JDateChooser();
+        alamatUser = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        alamatArea = new javax.swing.JTextArea();
         unameKet = new javax.swing.JLabel();
         unameField = new javax.swing.JTextField();
         unameKet2 = new javax.swing.JLabel();
         reunameField = new javax.swing.JTextField();
-        hpKet = new javax.swing.JLabel();
-        nohpFIeld = new javax.swing.JTextField();
         passKet = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         passKet2 = new javax.swing.JLabel();
         repasswordField = new javax.swing.JPasswordField();
         detectWrong = new javax.swing.JLabel();
-        logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1012, 729));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
 
+        BgPanel.setBackground(new java.awt.Color(255, 255, 255));
+        BgPanel.setAlignmentX(0.0F);
+        BgPanel.setAlignmentY(0.0F);
+        BgPanel.setMixingCutoutShape(null);
+        BgPanel.setPreferredSize(new java.awt.Dimension(1050, 532));
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RegisterFrame/Sign up-amico.png"))); // NOI18N
+
         dasarForm.setBackground(new java.awt.Color(3, 166, 44));
+        dasarForm.setAlignmentX(0.0F);
+        dasarForm.setAlignmentY(0.0F);
+        dasarForm.setAutoscrolls(true);
+
+        registerLabel.setBackground(new java.awt.Color(0, 255, 0));
+        registerLabel.setFont(new java.awt.Font("LEMON MILK", 3, 18)); // NOI18N
+        registerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registerLabel.setText("REGISTER");
+        registerLabel.setAlignmentY(0.0F);
+        registerLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registerLabel.setMaximumSize(new java.awt.Dimension(100, 50));
+        registerLabel.setPreferredSize(new java.awt.Dimension(100, 50));
 
         backLoginButton.setFont(new java.awt.Font("LEMON MILK", 0, 10)); // NOI18N
         backLoginButton.setForeground(new java.awt.Color(0, 153, 0));
         backLoginButton.setText("Back to Login");
+        backLoginButton.setPreferredSize(new java.awt.Dimension(168, 25));
         backLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backLoginButtonActionPerformed(evt);
@@ -80,30 +111,74 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
-        headPanel.setBackground(new java.awt.Color(3, 166, 44));
-
-        registerLabel.setBackground(new java.awt.Color(0, 255, 0));
-        registerLabel.setFont(new java.awt.Font("LEMON MILK", 3, 18)); // NOI18N
-        registerLabel.setForeground(new java.awt.Color(255, 255, 255));
-        registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        registerLabel.setText("REGISTER");
-        registerLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
-        headPanel.setLayout(headPanelLayout);
-        headPanelLayout.setHorizontalGroup(
-            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-        );
-        headPanelLayout.setVerticalGroup(
-            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headPanelLayout.createSequentialGroup()
-                .addComponent(registerLabel)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
         formPanel.setBackground(new java.awt.Color(3, 166, 44));
-        formPanel.setLayout(new java.awt.GridLayout(10, 1, 10, 5));
+        formPanel.setLayout(new java.awt.GridLayout(11, 2, 5, 5));
+
+        namaKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        namaKet.setForeground(new java.awt.Color(255, 255, 255));
+        namaKet.setText("NAMA");
+        namaKet.setMaximumSize(new java.awt.Dimension(168, 25));
+        formPanel.add(namaKet);
+
+        namaField.setMaximumSize(new java.awt.Dimension(168, 25));
+        namaField.setPreferredSize(new java.awt.Dimension(168, 25));
+        formPanel.add(namaField);
+
+        hpKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        hpKet.setForeground(new java.awt.Color(255, 255, 255));
+        hpKet.setText("HANDPHONE");
+        formPanel.add(hpKet);
+
+        nohpFIeld.setPreferredSize(new java.awt.Dimension(168, 25));
+        nohpFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nohpFIeldKeyReleased(evt);
+            }
+        });
+        formPanel.add(nohpFIeld);
+
+        jenisKelaminKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        jenisKelaminKet.setForeground(new java.awt.Color(255, 255, 255));
+        jenisKelaminKet.setText("Jenis kelamin");
+        formPanel.add(jenisKelaminKet);
+
+        jenisKelamin.setBackground(new java.awt.Color(255, 255, 255));
+        jenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+        jenisKelamin.setMixingCutoutShape(null);
+        formPanel.add(jenisKelamin);
+
+        tgllahirKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        tgllahirKet.setForeground(new java.awt.Color(255, 255, 255));
+        tgllahirKet.setText("Tanggal lahir");
+        formPanel.add(tgllahirKet);
+
+        tgllahirChooser.setBackground(new java.awt.Color(3, 166, 44));
+        tgllahirChooser.setDateFormatString("yyyy-MM-dd");
+        tgllahirChooser.setMinSelectableDate(new java.util.Date(-62135794681000L));
+        tgllahirChooser.setMinimumSize(new java.awt.Dimension(35, 26));
+        tgllahirChooser.setPreferredSize(new java.awt.Dimension(115, 26));
+        formPanel.add(tgllahirChooser);
+
+        alamatUser.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        alamatUser.setForeground(new java.awt.Color(255, 255, 255));
+        alamatUser.setText("Alamat");
+        formPanel.add(alamatUser);
+
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setHorizontalScrollBar(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(244, 100));
+        jScrollPane1.setRowHeaderView(null);
+
+        alamatArea.setColumns(20);
+        alamatArea.setLineWrap(true);
+        alamatArea.setRows(5);
+        alamatArea.setTabSize(5);
+        alamatArea.setToolTipText("");
+        alamatArea.setMinimumSize(new java.awt.Dimension(1, 50));
+        jScrollPane1.setViewportView(alamatArea);
+
+        formPanel.add(jScrollPane1);
 
         unameKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
         unameKet.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,19 +202,6 @@ public class RegisterFrame extends javax.swing.JFrame {
         });
         formPanel.add(reunameField);
 
-        hpKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
-        hpKet.setForeground(new java.awt.Color(255, 255, 255));
-        hpKet.setText("HANDPHONE");
-        formPanel.add(hpKet);
-
-        nohpFIeld.setPreferredSize(new java.awt.Dimension(168, 25));
-        nohpFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                nohpFIeldKeyReleased(evt);
-            }
-        });
-        formPanel.add(nohpFIeld);
-
         passKet.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
         passKet.setForeground(new java.awt.Color(255, 255, 255));
         passKet.setText("PASSWORD");
@@ -161,126 +223,172 @@ public class RegisterFrame extends javax.swing.JFrame {
         });
         formPanel.add(repasswordField);
 
-        detectWrong.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        detectWrong.setForeground(new java.awt.Color(255, 0, 0));
+        detectWrong.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        detectWrong.setForeground(new java.awt.Color(255, 255, 255));
+        formPanel.add(detectWrong);
 
         javax.swing.GroupLayout dasarFormLayout = new javax.swing.GroupLayout(dasarForm);
         dasarForm.setLayout(dasarFormLayout);
         dasarFormLayout.setHorizontalGroup(
             dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dasarFormLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 13, Short.MAX_VALUE))
+            .addGroup(dasarFormLayout.createSequentialGroup()
                 .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dasarFormLayout.createSequentialGroup()
-                        .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dasarFormLayout.createSequentialGroup()
-                        .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dasarFormLayout.createSequentialGroup()
-                        .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(formPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(detectWrong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(62, 62, 62))))
+                    .addGroup(dasarFormLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, dasarFormLayout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dasarFormLayout.setVerticalGroup(
             dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dasarFormLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(formPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dasarFormLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(detectWrong, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RegisterFrame/Sign up-amico.png"))); // NOI18N
-
-        javax.swing.GroupLayout bgPanel2Layout = new javax.swing.GroupLayout(bgPanel2);
-        bgPanel2.setLayout(bgPanel2Layout);
-        bgPanel2Layout.setHorizontalGroup(
-            bgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout BgPanelLayout = new javax.swing.GroupLayout(BgPanel);
+        BgPanel.setLayout(BgPanelLayout);
+        BgPanelLayout.setHorizontalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dasarForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        bgPanel2Layout.setVerticalGroup(
-            bgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(bgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(logoLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(dasarForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+        );
+        BgPanelLayout.setVerticalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelLayout.createSequentialGroup()
+                .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dasarForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1012, 677));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ 
+    
+    public boolean cekUsername(String username){
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean cekUser = false;
+        String query = "select nama_user from db_tubesPBO.tb_user where nama_user = ?";
+        
+        try {
+            ps = KonekDatabase.getConnection().prepareStatement(query);
+            ps.setString(1, username);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                cekUser = true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return cekUser;
+    }
+    
+    public void cekInputan (String username, String password, String reUsername, String rePassword){
+        boolean samakah = username.equals(reUsername);
+        boolean samapass = password.equals(rePassword);
+        
+        if (!samakah) {
+            JOptionPane.showMessageDialog(null, "UserName Berbeda");
+        } else if (!samapass) {
+            JOptionPane.showMessageDialog(null, "Password Berbeda");
+        } 
+    }
+    
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+
+        String namaUser = namaField.getText();
+        String regishpUser = nohpFIeld.getText();
+        String alamatUser = alamatArea.getText();
+        String tglLahirUser = null;
+        String jenisKelaminuser = (String) jenisKelamin.getSelectedItem();
         String regisuserName = unameField.getText();
         String regisreuserName = reunameField.getText();
-        String regishpUser = nohpFIeld.getText();
         String regispassword = passwordField.getText();
         String regisrePassword = repasswordField.getText();
         
-        boolean samakah = regisuserName.equals(regisreuserName);
-        boolean samapass = regispassword.equals(regisrePassword);
-                
-        if (!samakah) {
-            JOptionPane.showMessageDialog(null, "UserName Berbeda");
-        } 
-        else if (!samapass) {
-            JOptionPane.showMessageDialog(null, "Password Berbeda");
+        cekInputan(regisuserName, regispassword, regisuserName, regispassword);
+        if (cekUsername(regisuserName)){
+            JOptionPane.showMessageDialog(null, "Username telah digunakan!");
         } 
         else if (regisuserName.length() == 0) {
             detectWrong.setText("Kolom Username Kosong!");
         }
+        else if (regisreuserName.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Tulis ulang username!");
+        }
         else if (regispassword.length() == 0) {
             detectWrong.setText("Kolom Password Kosong!");
         }
+        else if (regisrePassword.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Tulis ulang password!");
+        }
         else if (regishpUser.length() == 0) {
-             detectWrong.setText("Kolom Handphone Kosong!");
-        }       
+            detectWrong.setText("Kolom Handphone Kosong!");
+        }
+        else if (alamatUser.length() == 0) {
+            detectWrong.setText("Kolom Alamat Kosong!");
+        }
         else {
+            if(tgllahirChooser.getDate() != null)
+            {
+                SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+                tglLahirUser = dateformat.format(tgllahirChooser.getDate());
+            }
             try{
-                Connection konekDatabase = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db_apotikMedikaSentoasa", "root", "kadekmontana050703");
-
-                PreparedStatement regisQuery = (PreparedStatement) konekDatabase.prepareStatement("insert into tb_user (user_name, hp_user, pass_user) values (?,?,?)");
-                
-                regisQuery.setString(1, regisuserName);
+                PreparedStatement regisQuery = KonekDatabase.getConnection().prepareStatement("insert into tb_user (nama_user,hp_user,jenis_kelamin_user,tgl_lahir_user,alamat_user,username_user,password_user) values (?,?,?,?,?,?,?)");
+                regisQuery.setString(1, namaUser);
                 regisQuery.setString(2, regishpUser);
-                regisQuery.setString(3, regispassword);
+                regisQuery.setString(3, jenisKelaminuser);
+                regisQuery.setString(4, tglLahirUser);
+                regisQuery.setString(5, alamatUser);
+                regisQuery.setString(6, regisuserName);
+                regisQuery.setString(7, regispassword);
                 regisQuery.executeUpdate();
                 JOptionPane.showMessageDialog(null,"Data Registered Successfully");
-                konekDatabase.close();
-            } catch (SQLException sqlException){
-                sqlException.printStackTrace();
+            } catch (SQLException ex){
+                 System.out.println(ex);
             }
         }
     }//GEN-LAST:event_registerButtonActionPerformed
@@ -296,7 +404,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String regispassword = passwordField.getText();
         String regisrePassword = repasswordField.getText();
-        
+  
         if (regispassword.equals(regisrePassword)) {
             detectWrong.setText(" ");
         }
@@ -388,6 +496,230 @@ public class RegisterFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -398,14 +730,20 @@ public class RegisterFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BgPanel;
+    private javax.swing.JTextArea alamatArea;
+    private javax.swing.JLabel alamatUser;
     private javax.swing.JButton backLoginButton;
-    private LoginFrame.bgPanel bgPanel2;
     private javax.swing.JPanel dasarForm;
     private javax.swing.JLabel detectWrong;
     private javax.swing.JPanel formPanel;
-    private javax.swing.JPanel headPanel;
     private javax.swing.JLabel hpKet;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jenisKelamin;
+    private javax.swing.JLabel jenisKelaminKet;
     private javax.swing.JLabel logoLabel;
+    private javax.swing.JTextField namaField;
+    private javax.swing.JLabel namaKet;
     private javax.swing.JTextField nohpFIeld;
     private javax.swing.JLabel passKet;
     private javax.swing.JLabel passKet2;
@@ -414,6 +752,8 @@ public class RegisterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel registerLabel;
     private javax.swing.JPasswordField repasswordField;
     private javax.swing.JTextField reunameField;
+    private com.toedter.calendar.JDateChooser tgllahirChooser;
+    private javax.swing.JLabel tgllahirKet;
     private javax.swing.JTextField unameField;
     private javax.swing.JLabel unameKet;
     private javax.swing.JLabel unameKet2;

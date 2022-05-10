@@ -5,6 +5,7 @@
 package DashboardFrame;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -20,9 +21,9 @@ public class produkpicPanel extends javax.swing.JPanel {
      */
     public produkpicPanel() {
         initComponents();
-        setOpaque(false);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
