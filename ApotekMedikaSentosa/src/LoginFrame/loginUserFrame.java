@@ -4,6 +4,7 @@
  */
 package LoginFrame;
 
+import DashboardFrame.dashboardUserFrame;
 import DashboardFrame.newDasboardUser;
 import RegisterFrame.*;
 import javax.swing.JOptionPane;
@@ -12,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import macamKoneksi.sessionLogin;
+import Database.sessionLogin;
 
 /**
  *
@@ -212,7 +213,7 @@ public class loginUserFrame extends javax.swing.JFrame {
         try{
             Connection konekDatabase = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_tubesPBO", "root", "kadekmontana050703");
             
-            PreparedStatement konekstatement = konekDatabase.prepareStatement("Select nama_user, password_user from tb_user where nama_user=? and password_user=?");
+            PreparedStatement konekstatement = konekDatabase.prepareStatement("Select username_user, password_user from tb_user where username_user=? and password_user=?");
             
             konekstatement.setString(1, userName);
             konekstatement.setString(2, password);
@@ -221,7 +222,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You have successfully logged in");
                 sessionLogin.set_nama(userName);
                 dispose();
-                newDasboardUser masukDashboard = new newDasboardUser();
+                dashboardUserFrame masukDashboard = new dashboardUserFrame();
                 masukDashboard.show();
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong Username & Password");

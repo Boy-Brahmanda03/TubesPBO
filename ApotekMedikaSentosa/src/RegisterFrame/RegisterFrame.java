@@ -65,7 +65,6 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1012, 729));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
 
@@ -82,17 +81,17 @@ public class RegisterFrame extends javax.swing.JFrame {
         dasarForm.setAlignmentY(0.0F);
         dasarForm.setAutoscrolls(true);
 
-        registerLabel.setBackground(new java.awt.Color(0, 255, 0));
+        registerLabel.setBackground(new java.awt.Color(3, 166, 44));
         registerLabel.setFont(new java.awt.Font("LEMON MILK", 3, 18)); // NOI18N
         registerLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registerLabel.setText("REGISTER");
         registerLabel.setAlignmentY(0.0F);
-        registerLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registerLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registerLabel.setMaximumSize(new java.awt.Dimension(100, 50));
         registerLabel.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        backLoginButton.setFont(new java.awt.Font("LEMON MILK", 0, 10)); // NOI18N
+        backLoginButton.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
         backLoginButton.setForeground(new java.awt.Color(0, 153, 0));
         backLoginButton.setText("Back to Login");
         backLoginButton.setPreferredSize(new java.awt.Dimension(168, 25));
@@ -102,7 +101,7 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
-        registerButton.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
+        registerButton.setFont(new java.awt.Font("Montserrat", 1, 13)); // NOI18N
         registerButton.setForeground(new java.awt.Color(0, 153, 0));
         registerButton.setText("REGISTER");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -236,23 +235,22 @@ public class RegisterFrame extends javax.swing.JFrame {
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 13, Short.MAX_VALUE))
             .addGroup(dasarFormLayout.createSequentialGroup()
-                .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dasarFormLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, dasarFormLayout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(227, 227, 227)
+                .addGroup(dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dasarFormLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(206, 206, 206))
         );
         dasarFormLayout.setVerticalGroup(
             dasarFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dasarFormLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
                 .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(42, 42, 42)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +304,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         PreparedStatement ps;
         ResultSet rs;
         boolean cekUser = false;
-        String query = "select nama_user from db_tubesPBO.tb_user where nama_user = ?";
+        String query = "select username_user from db_tubesPBO.tb_user where username_user = ?";
         
         try {
             ps = KonekDatabase.getConnection().prepareStatement(query);

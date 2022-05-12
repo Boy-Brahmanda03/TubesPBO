@@ -4,14 +4,11 @@
  */
 package DashboardFrame;
 
-import java.awt.Color;
-import macamKoneksi.sessionLogin;
-import java.awt.Dimension;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.ImageIcon;
-
+import Database.KonekDatabase;
+import Database.sessionLogin;
+import java.awt.CardLayout;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -22,11 +19,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     /**
      * Creates new form BackFrame
      */
+    CardLayout cardLayout;
     boolean cek = true;
     public dashboardUserFrame() {
         initComponents();
-        namaSession.setText(sessionLogin.get_nama());
-        popPanel.show(false);
+        namasesi_label.setText(sessionLogin.get_nama());
+        cardLayout = (CardLayout) (mainPanel.getLayout());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,341 +34,643 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        menuPop = new javax.swing.JPopupMenu();
-        dashbor = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jLabel4 = new javax.swing.JLabel();
-        bgPanel1 = new DashboardFrame.bgPanel();
+        bgPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
-        namaSession = new javax.swing.JLabel();
-        hamMenu = new javax.swing.JLabel();
-        popPanel = new javax.swing.JPanel();
-        categoryPanel = new javax.swing.JPanel();
-        CategoryLabel = new javax.swing.JLabel();
-        cartPanel = new javax.swing.JPanel();
-        cartLabel = new javax.swing.JLabel();
-        wishlistPanel = new javax.swing.JPanel();
-        wishlistLabel = new javax.swing.JLabel();
-        contactusPanel = new javax.swing.JPanel();
-        contactusLabel = new javax.swing.JLabel();
-        productHighlightPanel = new javax.swing.JPanel();
+        searchbar_panel = new javax.swing.JPanel();
+        logo_label = new javax.swing.JLabel();
+        headermenu_panel = new javax.swing.JPanel();
+        home_label = new javax.swing.JLabel();
+        namasesi_label = new javax.swing.JLabel();
+        splitPanel = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        mainPanel = new javax.swing.JPanel();
+        dashboard_panel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        profile_panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        productHighlightPanel1 = new javax.swing.JPanel();
-
-        dashbor.setText("jMenu1");
-        menuPop.add(dashbor);
-
-        jMenu1.setText("jMenu1");
-        menuPop.add(jMenu1);
-
-        jLabel4.setText("jLabel4");
+        jPanel1 = new javax.swing.JPanel();
+        dump_panel = new javax.swing.JPanel();
+        dump = new javax.swing.JLabel();
+        nama_panel = new javax.swing.JPanel();
+        nama_label = new javax.swing.JLabel();
+        namauser_profile = new javax.swing.JLabel();
+        nama_separator = new javax.swing.JSeparator();
+        hp_profile = new javax.swing.JPanel();
+        hp_label = new javax.swing.JLabel();
+        hpuser_profile = new javax.swing.JLabel();
+        hp_separator = new javax.swing.JSeparator();
+        jeniskelamin_profile = new javax.swing.JPanel();
+        jeniskelamin_label = new javax.swing.JLabel();
+        jeniskelaminuser_profile = new javax.swing.JLabel();
+        jkuser_separator = new javax.swing.JSeparator();
+        tgllahiruser_panel = new javax.swing.JPanel();
+        tgllahir_label = new javax.swing.JLabel();
+        tgllahiruser_profile = new javax.swing.JLabel();
+        tgllahir_separator = new javax.swing.JSeparator();
+        alamatuser_panel = new javax.swing.JPanel();
+        alamat_label = new javax.swing.JLabel();
+        alamatuser_label = new javax.swing.JLabel();
+        alamat_separator = new javax.swing.JSeparator();
+        jPanel4 = new javax.swing.JPanel();
+        editAkun = new javax.swing.JButton();
+        hapusAkun = new javax.swing.JButton();
+        logOut = new javax.swing.JButton();
+        kategori_panel = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        ObatLangka = new javax.swing.JPanel();
+        ObatGenerik = new javax.swing.JPanel();
+        Suplemen = new javax.swing.JPanel();
+        Herbal = new javax.swing.JPanel();
+        wishlist_panel = new javax.swing.JPanel();
+        daftartransak_panel = new javax.swing.JPanel();
+        keranjang_panel = new javax.swing.JPanel();
+        tentangkami_panel = new javax.swing.JPanel();
+        menuPanel = new javax.swing.JPanel();
+        batasPanel = new javax.swing.JPanel();
+        menuProfile = new javax.swing.JPanel();
+        profile_label = new javax.swing.JLabel();
+        menuKategori = new javax.swing.JPanel();
+        kategori_label = new javax.swing.JLabel();
+        menuWishlist = new javax.swing.JPanel();
+        wishlist_label = new javax.swing.JLabel();
+        menuKeranjang = new javax.swing.JPanel();
+        keranjang_label = new javax.swing.JLabel();
+        menuDaftarTransaksi = new javax.swing.JPanel();
+        daftartransaksi_label = new javax.swing.JLabel();
+        menuAboutUs = new javax.swing.JPanel();
+        aboutus_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("APOTEK");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setSize(new java.awt.Dimension(1000, 800));
+
+        bgPanel.setBackground(new java.awt.Color(255, 255, 255));
+        bgPanel.setPreferredSize(new java.awt.Dimension(1000, 800));
+        bgPanel.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(bgPanel, java.awt.BorderLayout.CENTER);
 
         headerPanel.setBackground(new java.awt.Color(3, 166, 44));
+        headerPanel.setMinimumSize(new java.awt.Dimension(1000, 100));
+        headerPanel.setPreferredSize(new java.awt.Dimension(1000, 100));
+        headerPanel.setLayout(new java.awt.BorderLayout(5, 5));
 
-        logoLabel.setFont(new java.awt.Font("Glitten", 1, 14)); // NOI18N
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/caduceus.png"))); // NOI18N
-        logoLabel.setText("APOTEK MEDIKA SENTOSA");
+        searchbar_panel.setBackground(new java.awt.Color(3, 166, 44));
+        searchbar_panel.setPreferredSize(new java.awt.Dimension(480, 100));
 
-        namaSession.setFont(new java.awt.Font("Glitten", 0, 14)); // NOI18N
-        namaSession.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        namaSession.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/user.png"))); // NOI18N
-        namaSession.setText("NAMA");
-        namaSession.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        logo_label.setFont(new java.awt.Font("Audrey", 1, 18)); // NOI18N
+        logo_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/caduceus.png"))); // NOI18N
+        logo_label.setText("APOTEK MEDIKA SENTOSA");
+        logo_label.setToolTipText("");
+        logo_label.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        hamMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/menu.png"))); // NOI18N
-        hamMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hamMenuMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
-        headerPanel.setLayout(headerPanelLayout);
-        headerPanelLayout.setHorizontalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(hamMenu)
-                .addGap(18, 18, 18)
-                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(namaSession, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        headerPanelLayout.setVerticalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaSession, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(hamMenu)
-                .addGap(24, 24, 24))
-        );
-
-        popPanel.setBackground(new java.awt.Color(255, 255, 255));
-        popPanel.setOpaque(false);
-        popPanel.setLayout(new javax.swing.BoxLayout(popPanel, javax.swing.BoxLayout.PAGE_AXIS));
-
-        categoryPanel.setBackground(new java.awt.Color(204, 255, 204));
-        categoryPanel.setMaximumSize(new java.awt.Dimension(249, 82));
-        categoryPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                categoryPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                categoryPanelMouseExited(evt);
-            }
-        });
-        categoryPanel.setLayout(new java.awt.CardLayout(15, 15));
-
-        CategoryLabel.setFont(new java.awt.Font("Glitten", 1, 13)); // NOI18N
-        CategoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CategoryLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/dashboard.png"))); // NOI18N
-        CategoryLabel.setText("CATEGORY");
-        categoryPanel.add(CategoryLabel, "card2");
-
-        popPanel.add(categoryPanel);
-        categoryPanel.getAccessibleContext().setAccessibleName("");
-
-        cartPanel.setBackground(new java.awt.Color(204, 255, 204));
-        cartPanel.setLayout(new java.awt.CardLayout());
-
-        cartLabel.setBackground(new java.awt.Color(204, 255, 204));
-        cartLabel.setFont(new java.awt.Font("Glitten", 0, 13)); // NOI18N
-        cartLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/shopping-cart.png"))); // NOI18N
-        cartLabel.setText("CART");
-        cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cartLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cartLabelMouseExited(evt);
-            }
-        });
-        cartPanel.add(cartLabel, "card2");
-
-        popPanel.add(cartPanel);
-
-        wishlistPanel.setBackground(new java.awt.Color(204, 255, 204));
-        wishlistPanel.setLayout(new java.awt.CardLayout());
-
-        wishlistLabel.setFont(new java.awt.Font("Glitten", 0, 13)); // NOI18N
-        wishlistLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        wishlistLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/heart.png"))); // NOI18N
-        wishlistLabel.setText("WISHLIST");
-        wishlistLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                wishlistLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                wishlistLabelMouseExited(evt);
-            }
-        });
-        wishlistPanel.add(wishlistLabel, "card2");
-
-        popPanel.add(wishlistPanel);
-
-        contactusPanel.setBackground(new java.awt.Color(204, 255, 204));
-        contactusPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                contactusPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                contactusPanelMouseExited(evt);
-            }
-        });
-        contactusPanel.setLayout(new java.awt.CardLayout());
-
-        contactusLabel.setFont(new java.awt.Font("Glitten", 0, 13)); // NOI18N
-        contactusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contactusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/contact-mail.png"))); // NOI18N
-        contactusLabel.setText("CONTACT US");
-        contactusPanel.add(contactusLabel, "card2");
-
-        popPanel.add(contactusPanel);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/pillsProduct.jpg"))); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/pillsBotolProduct.jpg"))); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/pillsBotolProduct.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout productHighlightPanelLayout = new javax.swing.GroupLayout(productHighlightPanel);
-        productHighlightPanel.setLayout(productHighlightPanelLayout);
-        productHighlightPanelLayout.setHorizontalGroup(
-            productHighlightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(productHighlightPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout searchbar_panelLayout = new javax.swing.GroupLayout(searchbar_panel);
+        searchbar_panel.setLayout(searchbar_panelLayout);
+        searchbar_panelLayout.setHorizontalGroup(
+            searchbar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchbar_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(productHighlightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(logo_label)
+                .addContainerGap(532, Short.MAX_VALUE))
         );
-        productHighlightPanelLayout.setVerticalGroup(
-            productHighlightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(productHighlightPanelLayout.createSequentialGroup()
-                .addGroup(productHighlightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(productHighlightPanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
-                    .addGroup(productHighlightPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+        searchbar_panelLayout.setVerticalGroup(
+            searchbar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchbar_panelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        headerPanel.add(searchbar_panel, java.awt.BorderLayout.CENTER);
+
+        headermenu_panel.setBackground(new java.awt.Color(3, 166, 44));
+        headermenu_panel.setPreferredSize(new java.awt.Dimension(150, 100));
+        headermenu_panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 40));
+
+        home_label.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        home_label.setText("Beranda");
+        headermenu_panel.add(home_label);
+
+        namasesi_label.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        headermenu_panel.add(namasesi_label);
+
+        headerPanel.add(headermenu_panel, java.awt.BorderLayout.EAST);
+
+        getContentPane().add(headerPanel, java.awt.BorderLayout.NORTH);
+
+        splitPanel.setBackground(new java.awt.Color(255, 255, 255));
+        splitPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
+        splitPanel.setLayout(new java.awt.BorderLayout());
+
+        jSplitPane1.setDividerSize(1);
+        jSplitPane1.setToolTipText("");
+        jSplitPane1.setMixingCutoutShape(null);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(1000, 700));
+
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setLayout(new java.awt.CardLayout());
+
+        dashboard_panel.setBackground(new java.awt.Color(255, 255, 255));
+        dashboard_panel.setLayout(new java.awt.GridLayout(2, 0));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/1209071-meds.jpeg"))); // NOI18N
+        jPanel2.add(jLabel1);
+
+        dashboard_panel.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        dashboard_panel.add(jPanel3);
+
+        mainPanel.add(dashboard_panel, "dashboard_card");
+
+        profile_panel.setBackground(new java.awt.Color(255, 255, 255));
+        profile_panel.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("PROFILE");
+        profile_panel.add(jLabel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(30, 1));
+
+        dump_panel.setBackground(new java.awt.Color(255, 255, 255));
+        dump_panel.setLayout(new java.awt.BorderLayout());
+
+        dump.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        dump.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dump_panel.add(dump, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(dump_panel);
+
+        nama_panel.setBackground(new java.awt.Color(255, 255, 255));
+        nama_panel.setLayout(new java.awt.BorderLayout());
+
+        nama_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        nama_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nama_label.setText("Nama");
+        nama_panel.add(nama_label, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(nama_panel);
+        jPanel1.add(namauser_profile);
+        jPanel1.add(nama_separator);
+
+        hp_profile.setBackground(new java.awt.Color(255, 255, 255));
+        hp_profile.setLayout(new java.awt.BorderLayout());
+
+        hp_label.setBackground(new java.awt.Color(255, 255, 255));
+        hp_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        hp_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hp_label.setText("Handphone");
+        hp_profile.add(hp_label, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(hp_profile);
+
+        hpuser_profile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(hpuser_profile);
+        jPanel1.add(hp_separator);
+
+        jeniskelamin_profile.setBackground(new java.awt.Color(255, 255, 255));
+        jeniskelamin_profile.setLayout(new java.awt.BorderLayout());
+
+        jeniskelamin_label.setBackground(new java.awt.Color(255, 255, 255));
+        jeniskelamin_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        jeniskelamin_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jeniskelamin_label.setText("Jenis Kelamin");
+        jeniskelamin_profile.add(jeniskelamin_label, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jeniskelamin_profile);
+        jPanel1.add(jeniskelaminuser_profile);
+        jPanel1.add(jkuser_separator);
+
+        tgllahiruser_panel.setBackground(new java.awt.Color(255, 255, 255));
+        tgllahiruser_panel.setLayout(new java.awt.BorderLayout());
+
+        tgllahir_label.setBackground(new java.awt.Color(255, 255, 255));
+        tgllahir_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        tgllahir_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tgllahir_label.setText("Tanggal Lahir");
+        tgllahiruser_panel.add(tgllahir_label, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(tgllahiruser_panel);
+
+        tgllahiruser_profile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(tgllahiruser_profile);
+        jPanel1.add(tgllahir_separator);
+
+        alamatuser_panel.setBackground(new java.awt.Color(255, 255, 255));
+        alamatuser_panel.setLayout(new java.awt.BorderLayout());
+
+        alamat_label.setBackground(new java.awt.Color(255, 255, 255));
+        alamat_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        alamat_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        alamat_label.setText("Alamat");
+        alamatuser_panel.add(alamat_label, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(alamatuser_panel);
+        jPanel1.add(alamatuser_label);
+        jPanel1.add(alamat_separator);
+
+        profile_panel.add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setPreferredSize(new java.awt.Dimension(795, 100));
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        editAkun.setText("Edit Akun");
+        jPanel4.add(editAkun, new java.awt.GridBagConstraints());
+
+        hapusAkun.setText("Hapus Akun");
+        jPanel4.add(hapusAkun, new java.awt.GridBagConstraints());
+
+        logOut.setText("Log Out");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        jPanel4.add(logOut, gridBagConstraints);
+
+        profile_panel.add(jPanel4, java.awt.BorderLayout.SOUTH);
+
+        mainPanel.add(profile_panel, "profile_card");
+
+        kategori_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 204));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        ObatLangka.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout ObatLangkaLayout = new javax.swing.GroupLayout(ObatLangka);
+        ObatLangka.setLayout(ObatLangkaLayout);
+        ObatLangkaLayout.setHorizontalGroup(
+            ObatLangkaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 774, Short.MAX_VALUE)
+        );
+        ObatLangkaLayout.setVerticalGroup(
+            ObatLangkaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Obat Langka", ObatLangka);
+
+        ObatGenerik.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout ObatGenerikLayout = new javax.swing.GroupLayout(ObatGenerik);
+        ObatGenerik.setLayout(ObatGenerikLayout);
+        ObatGenerikLayout.setHorizontalGroup(
+            ObatGenerikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 774, Short.MAX_VALUE)
+        );
+        ObatGenerikLayout.setVerticalGroup(
+            ObatGenerikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Obat Generik", ObatGenerik);
+
+        Suplemen.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout SuplemenLayout = new javax.swing.GroupLayout(Suplemen);
+        Suplemen.setLayout(SuplemenLayout);
+        SuplemenLayout.setHorizontalGroup(
+            SuplemenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 774, Short.MAX_VALUE)
+        );
+        SuplemenLayout.setVerticalGroup(
+            SuplemenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Suplemen", Suplemen);
+
+        Herbal.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout HerbalLayout = new javax.swing.GroupLayout(Herbal);
+        Herbal.setLayout(HerbalLayout);
+        HerbalLayout.setHorizontalGroup(
+            HerbalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 774, Short.MAX_VALUE)
+        );
+        HerbalLayout.setVerticalGroup(
+            HerbalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Herbal", Herbal);
+
+        javax.swing.GroupLayout kategori_panelLayout = new javax.swing.GroupLayout(kategori_panel);
+        kategori_panel.setLayout(kategori_panelLayout);
+        kategori_panelLayout.setHorizontalGroup(
+            kategori_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        kategori_panelLayout.setVerticalGroup(
+            kategori_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kategori_panelLayout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout productHighlightPanel1Layout = new javax.swing.GroupLayout(productHighlightPanel1);
-        productHighlightPanel1.setLayout(productHighlightPanel1Layout);
-        productHighlightPanel1Layout.setHorizontalGroup(
-            productHighlightPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainPanel.add(kategori_panel, "kategori_card");
+
+        wishlist_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout wishlist_panelLayout = new javax.swing.GroupLayout(wishlist_panel);
+        wishlist_panel.setLayout(wishlist_panelLayout);
+        wishlist_panelLayout.setHorizontalGroup(
+            wishlist_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        wishlist_panelLayout.setVerticalGroup(
+            wishlist_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(wishlist_panel, "wishlist_card");
+
+        daftartransak_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout daftartransak_panelLayout = new javax.swing.GroupLayout(daftartransak_panel);
+        daftartransak_panel.setLayout(daftartransak_panelLayout);
+        daftartransak_panelLayout.setHorizontalGroup(
+            daftartransak_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        daftartransak_panelLayout.setVerticalGroup(
+            daftartransak_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(daftartransak_panel, "daftartransak_panel");
+
+        keranjang_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout keranjang_panelLayout = new javax.swing.GroupLayout(keranjang_panel);
+        keranjang_panel.setLayout(keranjang_panelLayout);
+        keranjang_panelLayout.setHorizontalGroup(
+            keranjang_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        keranjang_panelLayout.setVerticalGroup(
+            keranjang_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(keranjang_panel, "keranjang_card");
+
+        tentangkami_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout tentangkami_panelLayout = new javax.swing.GroupLayout(tentangkami_panel);
+        tentangkami_panel.setLayout(tentangkami_panelLayout);
+        tentangkami_panelLayout.setHorizontalGroup(
+            tentangkami_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        tentangkami_panelLayout.setVerticalGroup(
+            tentangkami_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(tentangkami_panel, "tentangkami_card");
+
+        jSplitPane1.setBottomComponent(mainPanel);
+
+        menuPanel.setBackground(new java.awt.Color(204, 255, 204));
+        menuPanel.setPreferredSize(new java.awt.Dimension(200, 700));
+        menuPanel.setLayout(new java.awt.GridLayout(15, 1, 20, 10));
+
+        batasPanel.setBackground(new java.awt.Color(204, 255, 204));
+        batasPanel.setPreferredSize(new java.awt.Dimension(100, 100));
+        batasPanel.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout batasPanelLayout = new javax.swing.GroupLayout(batasPanel);
+        batasPanel.setLayout(batasPanelLayout);
+        batasPanelLayout.setHorizontalGroup(
+            batasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        productHighlightPanel1Layout.setVerticalGroup(
-            productHighlightPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+        batasPanelLayout.setVerticalGroup(
+            batasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout bgPanel1Layout = new javax.swing.GroupLayout(bgPanel1);
-        bgPanel1.setLayout(bgPanel1Layout);
-        bgPanel1Layout.setHorizontalGroup(
-            bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(bgPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(popPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(productHighlightPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(productHighlightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        bgPanel1Layout.setVerticalGroup(
-            bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel1Layout.createSequentialGroup()
-                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(popPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(bgPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productHighlightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productHighlightPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        menuPanel.add(batasPanel);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(bgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        menuProfile.setBackground(new java.awt.Color(255, 255, 255));
+        menuProfile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuProfileMouseClicked(evt);
+            }
+        });
+        menuProfile.setLayout(new java.awt.GridBagLayout());
+
+        profile_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        profile_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        profile_label.setText("Profile");
+        profile_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profile_labelMouseClicked(evt);
+            }
+        });
+        menuProfile.add(profile_label, new java.awt.GridBagConstraints());
+
+        menuPanel.add(menuProfile);
+
+        menuKategori.setBackground(new java.awt.Color(255, 255, 255));
+        menuKategori.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuKategoriMouseClicked(evt);
+            }
+        });
+        menuKategori.setLayout(new java.awt.GridBagLayout());
+
+        kategori_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        kategori_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kategori_label.setText("Kategori");
+        kategori_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kategori_labelMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 68, 9, 68);
+        menuKategori.add(kategori_label, gridBagConstraints);
+
+        menuPanel.add(menuKategori);
+
+        menuWishlist.setBackground(new java.awt.Color(255, 255, 255));
+        menuWishlist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuWishlistMouseClicked(evt);
+            }
+        });
+        menuWishlist.setLayout(new java.awt.GridBagLayout());
+
+        wishlist_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        wishlist_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        wishlist_label.setText("Wishlist");
+        wishlist_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                wishlist_labelMouseClicked(evt);
+            }
+        });
+        menuWishlist.add(wishlist_label, new java.awt.GridBagConstraints());
+
+        menuPanel.add(menuWishlist);
+
+        menuKeranjang.setBackground(new java.awt.Color(255, 255, 255));
+        menuKeranjang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuKeranjangMouseClicked(evt);
+            }
+        });
+        menuKeranjang.setLayout(new java.awt.GridBagLayout());
+
+        keranjang_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        keranjang_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        keranjang_label.setText("Keranjang");
+        keranjang_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                keranjang_labelMouseClicked(evt);
+            }
+        });
+        menuKeranjang.add(keranjang_label, new java.awt.GridBagConstraints());
+
+        menuPanel.add(menuKeranjang);
+
+        menuDaftarTransaksi.setBackground(new java.awt.Color(255, 255, 255));
+        menuDaftarTransaksi.setLayout(new java.awt.GridBagLayout());
+
+        daftartransaksi_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        daftartransaksi_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        daftartransaksi_label.setText("Daftar Transaksi");
+        menuDaftarTransaksi.add(daftartransaksi_label, new java.awt.GridBagConstraints());
+
+        menuPanel.add(menuDaftarTransaksi);
+
+        menuAboutUs.setBackground(new java.awt.Color(255, 255, 255));
+        menuAboutUs.setLayout(new java.awt.GridBagLayout());
+
+        aboutus_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        aboutus_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        aboutus_label.setText("Tentang Kami");
+        menuAboutUs.add(aboutus_label, new java.awt.GridBagConstraints());
+
+        menuPanel.add(menuAboutUs);
+
+        jSplitPane1.setTopComponent(menuPanel);
+
+        splitPanel.add(jSplitPane1, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(splitPanel, java.awt.BorderLayout.CENTER);
 
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void changeColor (JPanel panel, Color hex){
-        panel.setBackground(hex);
-    }
-    
-    public  void changeIcon (JLabel ham, String resource){
-        ImageIcon ikon = new ImageIcon (getClass().getResource(resource));
-        ham.setIcon(ikon);
-    }
-    
-    public void popMenu (JPanel menuPop , boolean dashboard, JLabel hamMenu){
-        if (dashboard == true) {
-            menuPop.setPreferredSize(new Dimension (249, 329));
-            changeIcon(hamMenu, "/DashboardFrame/gambar/close.png");
-            menuPop.show(true);
+
+    //profile set
+    private void profile_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profile_labelMouseClicked
+        cardLayout.show(mainPanel, "profile_card");
+        PreparedStatement ps;
+        ResultSet rs;
+        String username;
+        int id_user = 1;
+        String sql = "select nama_user from db_tubesPBO.tb_user where id_user = " + id_user;
+
+        try {
+            ps = KonekDatabase.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            username = rs.getString(1);
+            namauser_profile.setText(username);
             
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        else {
-            menuPop.show(false);
-            changeIcon(hamMenu, "/DashboardFrame/gambar/menu.png");
+    }//GEN-LAST:event_profile_labelMouseClicked
+
+    private void menuProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProfileMouseClicked
+        cardLayout.show(mainPanel, "profile_card");
+        PreparedStatement ps;
+        ResultSet rs;
+        String username;
+        //int id_user = 1;
+        String sql = "select nama_user from db_tubesPBO.tb_user where id_user = 1";
+
+        try {
+            ps = KonekDatabase.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            username = rs.getString(1);
+            namauser_profile.setText(username);
+            
+        } catch (Exception e) {
+            System.out.println(e);
         }
-    }
+    }//GEN-LAST:event_menuProfileMouseClicked
+
     
-    private void hamMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hamMenuMouseClicked
-        
-        if (cek == true) {
-            popMenu(popPanel, cek, hamMenu);
-            SwingUtilities.updateComponentTreeUI(this);
-            cek = false;
-        }
-        else {
-            popMenu(popPanel, cek, hamMenu);
-            SwingUtilities.updateComponentTreeUI(this);
-            cek = true;
-        }
-    }//GEN-LAST:event_hamMenuMouseClicked
+//kategori set
+    private void menuKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuKategoriMouseClicked
+        cardLayout.show(mainPanel, "kategori_card");
+    }//GEN-LAST:event_menuKategoriMouseClicked
 
-    private void categoryPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelMouseEntered
+    private void kategori_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategori_labelMouseClicked
         // TODO add your handling code here:
-        changeColor(categoryPanel, new Color(3,166,44));
-    }//GEN-LAST:event_categoryPanelMouseEntered
+        cardLayout.show(mainPanel, "kategori_card");
+    }//GEN-LAST:event_kategori_labelMouseClicked
 
-    private void categoryPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelMouseExited
+  
+//whislist set
+    private void wishlist_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wishlist_labelMouseClicked
         // TODO add your handling code here:
-        changeColor(categoryPanel, new Color(204,255,204));
-    }//GEN-LAST:event_categoryPanelMouseExited
+        cardLayout.show(mainPanel, "wishlist_card");
+    }//GEN-LAST:event_wishlist_labelMouseClicked
 
-    private void cartLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseEntered
+    private void menuWishlistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuWishlistMouseClicked
         // TODO add your handling code here:
-        changeColor(cartPanel, new Color(3,166,44));
-    }//GEN-LAST:event_cartLabelMouseEntered
+        cardLayout.show(mainPanel, "wishlist_card");
+    }//GEN-LAST:event_menuWishlistMouseClicked
 
-    private void cartLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseExited
+//keranjang set
+    private void keranjang_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keranjang_labelMouseClicked
         // TODO add your handling code here:
-        changeColor(cartPanel, new Color(204,255,204));
-    }//GEN-LAST:event_cartLabelMouseExited
+        cardLayout.show(mainPanel, "keranjang_card");
+    }//GEN-LAST:event_keranjang_labelMouseClicked
 
-    private void wishlistLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wishlistLabelMouseEntered
+    private void menuKeranjangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuKeranjangMouseClicked
         // TODO add your handling code here:
-        changeColor(wishlistPanel, new Color(3,166,44));
-    }//GEN-LAST:event_wishlistLabelMouseEntered
+        cardLayout.show(mainPanel, "keranjang_card");
+    }//GEN-LAST:event_menuKeranjangMouseClicked
 
-    private void wishlistLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wishlistLabelMouseExited
-        // TODO add your handling code here:
-        changeColor(wishlistPanel, new Color(204,255,204));
-    }//GEN-LAST:event_wishlistLabelMouseExited
 
-    private void contactusPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactusPanelMouseEntered
-        // TODO add your handling code here:
-        changeColor(contactusPanel, new Color(3,166,44));
-    }//GEN-LAST:event_contactusPanelMouseEntered
 
-    private void contactusPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactusPanelMouseExited
-        // TODO add your handling code here:
-        changeColor(contactusPanel, new Color(204,255,204));
-    }//GEN-LAST:event_contactusPanelMouseExited
 
+    
     
     /**
      * @param args the command line arguments
@@ -439,28 +739,72 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CategoryLabel;
-    private DashboardFrame.bgPanel bgPanel1;
-    private javax.swing.JLabel cartLabel;
-    private javax.swing.JPanel cartPanel;
-    private javax.swing.JPanel categoryPanel;
-    private javax.swing.JLabel contactusLabel;
-    private javax.swing.JPanel contactusPanel;
-    private javax.swing.JMenu dashbor;
-    private javax.swing.JLabel hamMenu;
+    private javax.swing.JPanel Herbal;
+    private javax.swing.JPanel ObatGenerik;
+    private javax.swing.JPanel ObatLangka;
+    private javax.swing.JPanel Suplemen;
+    private javax.swing.JLabel aboutus_label;
+    private javax.swing.JLabel alamat_label;
+    private javax.swing.JSeparator alamat_separator;
+    private javax.swing.JLabel alamatuser_label;
+    private javax.swing.JPanel alamatuser_panel;
+    private javax.swing.JPanel batasPanel;
+    private javax.swing.JPanel bgPanel;
+    private javax.swing.JPanel daftartransak_panel;
+    private javax.swing.JLabel daftartransaksi_label;
+    private javax.swing.JPanel dashboard_panel;
+    private javax.swing.JLabel dump;
+    private javax.swing.JPanel dump_panel;
+    private javax.swing.JButton editAkun;
+    private javax.swing.JButton hapusAkun;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JPanel headermenu_panel;
+    private javax.swing.JLabel home_label;
+    private javax.swing.JLabel hp_label;
+    private javax.swing.JPanel hp_profile;
+    private javax.swing.JSeparator hp_separator;
+    private javax.swing.JLabel hpuser_profile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JLabel logoLabel;
-    private javax.swing.JPopupMenu menuPop;
-    private javax.swing.JLabel namaSession;
-    private javax.swing.JPanel popPanel;
-    private javax.swing.JPanel productHighlightPanel;
-    private javax.swing.JPanel productHighlightPanel1;
-    private javax.swing.JLabel wishlistLabel;
-    private javax.swing.JPanel wishlistPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jeniskelamin_label;
+    private javax.swing.JPanel jeniskelamin_profile;
+    private javax.swing.JLabel jeniskelaminuser_profile;
+    private javax.swing.JSeparator jkuser_separator;
+    private javax.swing.JLabel kategori_label;
+    private javax.swing.JPanel kategori_panel;
+    private javax.swing.JLabel keranjang_label;
+    private javax.swing.JPanel keranjang_panel;
+    private javax.swing.JButton logOut;
+    private javax.swing.JLabel logo_label;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel menuAboutUs;
+    private javax.swing.JPanel menuDaftarTransaksi;
+    private javax.swing.JPanel menuKategori;
+    private javax.swing.JPanel menuKeranjang;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JPanel menuProfile;
+    private javax.swing.JPanel menuWishlist;
+    private javax.swing.JLabel nama_label;
+    private javax.swing.JPanel nama_panel;
+    private javax.swing.JSeparator nama_separator;
+    private javax.swing.JLabel namasesi_label;
+    private javax.swing.JLabel namauser_profile;
+    private javax.swing.JLabel profile_label;
+    private javax.swing.JPanel profile_panel;
+    private javax.swing.JPanel searchbar_panel;
+    private javax.swing.JPanel splitPanel;
+    private javax.swing.JPanel tentangkami_panel;
+    private javax.swing.JLabel tgllahir_label;
+    private javax.swing.JSeparator tgllahir_separator;
+    private javax.swing.JPanel tgllahiruser_panel;
+    private javax.swing.JLabel tgllahiruser_profile;
+    private javax.swing.JLabel wishlist_label;
+    private javax.swing.JPanel wishlist_panel;
     // End of variables declaration//GEN-END:variables
 }
