@@ -5,6 +5,7 @@
 package LoginFrame;
 
 import DashboardFrame.dashboardUserFrame;
+import Database.KonekDatabase;
 import RegisterFrame.*;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -189,17 +190,15 @@ public class loginAdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = unameField.getText();
         String password = loginpassField.getText();
+        String st = ("Select user_name, pass_user from tb_user where user_name=? and pass_user=?");
         try{
-            Connection konekDatabase = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_apotikMedikaSentoasa", "root", "kadekmontana050703");
-            
-            PreparedStatement konekstatement = konekDatabase.prepareStatement("Select user_name, pass_user from tb_user where user_name=? and pass_user=?");
-            
+            PreparedStatement konekstatement = KonekDatabase.getConnection().prepareStatement(st);   
             konekstatement.setString(1, userName);
             konekstatement.setString(2, password);
             ResultSet hasilKonek = konekstatement.executeQuery();
             if (hasilKonek.next()) {
                 JOptionPane.showMessageDialog(null, "You have successfully logged in");
-                sessionLogin.set_nama(userName);
+                //sessionLogin.set_nama(userName);
                 dispose();
                 dashboardUserFrame masukDashboard = new dashboardUserFrame();
                 masukDashboard.show();

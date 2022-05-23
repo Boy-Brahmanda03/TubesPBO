@@ -5,7 +5,7 @@
 package LoginFrame;
 
 import DashboardFrame.dashboardUserFrame;
-import DashboardFrame.newDasboardUser;
+import Database.KonekDatabase;
 import RegisterFrame.*;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -91,6 +91,7 @@ public class loginUserFrame extends javax.swing.JFrame {
         registerLabel.setText("LOGIN");
         registerLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        loginButton.setBackground(new java.awt.Color(204, 255, 204));
         loginButton.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
         loginButton.setForeground(new java.awt.Color(0, 153, 0));
         loginButton.setText("Login");
@@ -210,25 +211,30 @@ public class loginUserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = unameField.getText();
         String password = loginpassField.getText();
-        try{
-            Connection konekDatabase = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_tubesPBO", "root", "kadekmontana050703");
-            
-            PreparedStatement konekstatement = konekDatabase.prepareStatement("Select username_user, password_user from tb_user where username_user=? and password_user=?");
-            
+   
+        String st = ("Select * from tb_user where username_user=? and password_user=?");
+        try{            
+            PreparedStatement konekstatement = KonekDatabase.getConnection().prepareStatement(st);
             konekstatement.setString(1, userName);
             konekstatement.setString(2, password);
             ResultSet hasilKonek = konekstatement.executeQuery();
             if (hasilKonek.next()) {
                 JOptionPane.showMessageDialog(null, "You have successfully logged in");
-                sessionLogin.set_nama(userName);
+                sessionLogin.set_uname(userName);
+                sessionLogin.set_id(hasilKonek.getInt(1));
+                sessionLogin.set_name(hasilKonek.getString(2));
+                sessionLogin.set_nohp(hasilKonek.getString(3));
+                sessionLogin.set_jeniskelamin(hasilKonek.getString(4));
+                sessionLogin.set_tgllahir(hasilKonek.getString(5));
+                sessionLogin.set_alamat(hasilKonek.getString(6));
                 dispose();
                 dashboardUserFrame masukDashboard = new dashboardUserFrame();
                 masukDashboard.show();
             } else {
-                JOptionPane.showMessageDialog(null, "Wrong Username & Password");
+                JOptionPane.showMessageDialog(null, "Wrong Username or Password");
             }
-        } catch (SQLException sqlException){
-            sqlException.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

@@ -13,7 +13,6 @@ import java.sql.DriverManager;
  */
 public class KonekDatabase {
     public static Connection getConnection(){
-     
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
