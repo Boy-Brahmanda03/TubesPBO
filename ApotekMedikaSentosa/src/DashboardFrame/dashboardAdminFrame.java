@@ -4,6 +4,7 @@
  */
 package DashboardFrame;
 
+import Database.sessionLogin;
 import java.awt.CardLayout;
 
 /**
@@ -18,6 +19,7 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
     CardLayout cardlayout;
     public dashboardAdminFrame() {
         initComponents();
+        jLabel4.setText(sessionLogin.get_name());
         cardlayout = (CardLayout) (PanelInduk.getLayout());
     }
 
