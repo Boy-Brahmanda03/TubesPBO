@@ -55,6 +55,7 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
         jLabelObat = new javax.swing.JLabel();
         jPanelbarang = new javax.swing.JPanel();
         jLabelBarang = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         paneldatamaster = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -356,6 +357,8 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout paneldashboardLayout = new javax.swing.GroupLayout(paneldashboard);
         paneldashboard.setLayout(paneldashboardLayout);
         paneldashboardLayout.setHorizontalGroup(
@@ -363,15 +366,20 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1)
             .addGroup(paneldashboardLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(paneldashboardLayout.createSequentialGroup()
                 .addGap(180, 180, 180)
                 .addComponent(jPanelobat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(jPanelbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(187, 187, 187))
+            .addGroup(paneldashboardLayout.createSequentialGroup()
+                .addGroup(paneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneldashboardLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneldashboardLayout.createSequentialGroup()
+                        .addGap(472, 472, 472)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paneldashboardLayout.setVerticalGroup(
             paneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +393,9 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
                 .addGroup(paneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelobat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addGap(61, 61, 61))
         );
 
         PanelInduk.add(paneldashboard, "paneldashboard");
@@ -849,6 +859,7 @@ public class dashboardAdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel fieldBarang;
     private javax.swing.JPanel fieldObat;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

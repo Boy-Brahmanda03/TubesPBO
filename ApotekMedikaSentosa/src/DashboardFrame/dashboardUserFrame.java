@@ -154,6 +154,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         keranjangTable = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         daftartransaki_panel = new javax.swing.JPanel();
         tentangkami_panel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -1336,15 +1337,23 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setText("jButton1");
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 863, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(413, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(353, 353, 353))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jButton1)
+                .addContainerGap(523, Short.MAX_VALUE))
         );
 
         keranjang_panel.add(jPanel10);
@@ -2147,6 +2156,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator hp_separator1;
     private javax.swing.JTextField hp_textfield;
     private javax.swing.JLabel hpuser_profile;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
