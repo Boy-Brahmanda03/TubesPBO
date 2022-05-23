@@ -4,16 +4,14 @@
  */
 package LoginFrame;
 
+import DashboardFrame.dashboardAdminFrame;
 import DashboardFrame.dashboardUserFrame;
 import Database.KonekDatabase;
-import RegisterFrame.*;
+import Database.sessionLogin;
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Database.sessionLogin;
 
 /**
  *
@@ -48,7 +46,6 @@ public class loginAdminFrame extends javax.swing.JFrame {
         loginpassField = new javax.swing.JPasswordField();
         registerLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        forgotPass = new javax.swing.JLabel();
         loginAsUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,9 +96,6 @@ public class loginAdminFrame extends javax.swing.JFrame {
             }
         });
 
-        forgotPass.setForeground(new java.awt.Color(255, 255, 255));
-        forgotPass.setText("Forgot password?");
-
         loginAsUser.setForeground(new java.awt.Color(255, 255, 255));
         loginAsUser.setText("Login As User");
         loginAsUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,9 +121,6 @@ public class loginAdminFrame extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(backFormPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backFormPanelLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(loginAsUser)))
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -141,9 +132,7 @@ public class loginAdminFrame extends javax.swing.JFrame {
                 .addComponent(registerLabel)
                 .addGap(33, 33, 33)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(59, 59, 59)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginAsUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,30 +179,34 @@ public class loginAdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = unameField.getText();
         String password = loginpassField.getText();
-        String st = ("Select user_name, pass_user from tb_user where user_name=? and pass_user=?");
-        try{
-            PreparedStatement konekstatement = KonekDatabase.getConnection().prepareStatement(st);   
+        String st = ("Select * from admin where username_admin=? and password_admin=?");
+
+        try{            
+            PreparedStatement konekstatement = KonekDatabase.getConnection().prepareStatement(st);
             konekstatement.setString(1, userName);
             konekstatement.setString(2, password);
             ResultSet hasilKonek = konekstatement.executeQuery();
             if (hasilKonek.next()) {
                 JOptionPane.showMessageDialog(null, "You have successfully logged in");
-                //sessionLogin.set_nama(userName);
+                sessionLogin.set_uname(userName);
+                sessionLogin.set_id(hasilKonek.getInt(1));
+                sessionLogin.set_name(hasilKonek.getString(2));
+                sessionLogin.set_alamat(hasilKonek.getString(3));
                 dispose();
-                dashboardUserFrame masukDashboard = new dashboardUserFrame();
+                dashboardAdminFrame masukDashboard = new dashboardAdminFrame();
                 masukDashboard.show();
             } else {
-                JOptionPane.showMessageDialog(null, "Wrong Username & Password");
+                JOptionPane.showMessageDialog(null, "Wrong Username or Password");
             }
-        } catch (SQLException sqlException){
-            sqlException.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginAsUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAsUserMouseClicked
         // TODO add your handling code here:
-        loginUserFrame userLogin = new loginUserFrame();
-        userLogin.show();
+        dashboardAdminFrame adminLogin = new dashboardAdminFrame();
+        adminLogin.show();
         dispose();
     }//GEN-LAST:event_loginAsUserMouseClicked
 
@@ -286,7 +279,6 @@ public class loginAdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backFormPanel;
     private LoginFrame.bgPanel bgPanel2;
-    private javax.swing.JLabel forgotPass;
     private javax.swing.JPanel formPanel;
     private javax.swing.JLabel loginAsUser;
     private javax.swing.JButton loginButton;

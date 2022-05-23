@@ -8,8 +8,6 @@ import DashboardFrame.dashboardUserFrame;
 import Database.KonekDatabase;
 import RegisterFrame.*;
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +46,6 @@ public class loginUserFrame extends javax.swing.JFrame {
         loginpassField = new javax.swing.JPasswordField();
         registerLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        forgotPass = new javax.swing.JLabel();
         createAccount = new javax.swing.JLabel();
         loginAsAdmin = new javax.swing.JLabel();
 
@@ -101,9 +98,6 @@ public class loginUserFrame extends javax.swing.JFrame {
             }
         });
 
-        forgotPass.setForeground(new java.awt.Color(255, 255, 255));
-        forgotPass.setText("Forgot password?");
-
         createAccount.setForeground(new java.awt.Color(255, 255, 255));
         createAccount.setText("Don't have an account? ");
         createAccount.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,10 +134,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                         .addComponent(createAccount))
                     .addGroup(backFormPanelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backFormPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         backFormPanelLayout.setVerticalGroup(
@@ -153,9 +144,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                 .addComponent(registerLabel)
                 .addGap(33, 33, 33)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(59, 59, 59)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +288,6 @@ public class loginUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel backFormPanel;
     private LoginFrame.bgPanel bgPanel2;
     private javax.swing.JLabel createAccount;
-    private javax.swing.JLabel forgotPass;
     private javax.swing.JPanel formPanel;
     private javax.swing.JLabel loginAsAdmin;
     private javax.swing.JButton loginButton;
