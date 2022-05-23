@@ -5,7 +5,6 @@
 package LoginFrame;
 
 import DashboardFrame.dashboardAdminFrame;
-import DashboardFrame.dashboardUserFrame;
 import Database.KonekDatabase;
 import Database.sessionLogin;
 import javax.swing.JOptionPane;
@@ -205,7 +204,7 @@ public class loginAdminFrame extends javax.swing.JFrame {
 
     private void loginAsUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAsUserMouseClicked
         // TODO add your handling code here:
-        dashboardAdminFrame adminLogin = new dashboardAdminFrame();
+        loginUserFrame adminLogin = new loginUserFrame();
         adminLogin.show();
         dispose();
     }//GEN-LAST:event_loginAsUserMouseClicked

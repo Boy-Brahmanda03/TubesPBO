@@ -229,8 +229,8 @@ public class loginUserFrame extends javax.swing.JFrame {
 
     private void loginAsAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAsAdminMouseClicked
         // TODO add your handling code here:
-        loginAdminFrame adminLogin = new loginAdminFrame();
-        adminLogin.show();
+        loginAdminFrame toAdmin = new loginAdminFrame();
+        toAdmin.show();
         dispose();
     }//GEN-LAST:event_loginAsAdminMouseClicked
 
