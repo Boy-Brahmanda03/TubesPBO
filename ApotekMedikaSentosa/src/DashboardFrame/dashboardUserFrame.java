@@ -158,27 +158,27 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         dump1 = new javax.swing.JLabel();
         nama_panel1 = new javax.swing.JPanel();
         nama_label1 = new javax.swing.JLabel();
-        namauser_profile1 = new javax.swing.JLabel();
+        nama_textfield = new javax.swing.JTextField();
         nama_separator1 = new javax.swing.JSeparator();
         hp_profile1 = new javax.swing.JPanel();
         hp_label1 = new javax.swing.JLabel();
-        hpuser_profile1 = new javax.swing.JLabel();
+        hp_textfield = new javax.swing.JTextField();
         hp_separator1 = new javax.swing.JSeparator();
         jeniskelamin_profile1 = new javax.swing.JPanel();
         jeniskelamin_label1 = new javax.swing.JLabel();
-        jeniskelaminuser_profile1 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jkuser_separator1 = new javax.swing.JSeparator();
         tgllahiruser_panel1 = new javax.swing.JPanel();
         tgllahir_label1 = new javax.swing.JLabel();
-        tgllahiruser_profile1 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         tgllahir_separator1 = new javax.swing.JSeparator();
         alamatuser_panel1 = new javax.swing.JPanel();
         alamat_label1 = new javax.swing.JLabel();
-        alamatuser_label1 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         alamat_separator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         backtoprofile = new javax.swing.JButton();
-        logOut2 = new javax.swing.JButton();
+        konfirm = new javax.swing.JButton();
         menuPanel = new javax.swing.JPanel();
         batasPanel = new javax.swing.JPanel();
         menuProfile = new javax.swing.JPanel();
@@ -1257,7 +1257,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         editprofile_panel.add(jLabel8, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.GridLayout(30, 1));
+        jPanel2.setLayout(new java.awt.GridLayout(20, 1));
 
         dump_panel1.setBackground(new java.awt.Color(255, 255, 255));
         dump_panel1.setLayout(new java.awt.BorderLayout());
@@ -1277,7 +1277,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         nama_panel1.add(nama_label1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(nama_panel1);
-        jPanel2.add(namauser_profile1);
+        jPanel2.add(nama_textfield);
         jPanel2.add(nama_separator1);
 
         hp_profile1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1290,9 +1290,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         hp_profile1.add(hp_label1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(hp_profile1);
-
-        hpuser_profile1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(hpuser_profile1);
+        jPanel2.add(hp_textfield);
         jPanel2.add(hp_separator1);
 
         jeniskelamin_profile1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1305,7 +1303,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jeniskelamin_profile1.add(jeniskelamin_label1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jeniskelamin_profile1);
-        jPanel2.add(jeniskelaminuser_profile1);
+        jPanel2.add(jTextField3);
         jPanel2.add(jkuser_separator1);
 
         tgllahiruser_panel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1318,9 +1316,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         tgllahiruser_panel1.add(tgllahir_label1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(tgllahiruser_panel1);
-
-        tgllahiruser_profile1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(tgllahiruser_profile1);
+        jPanel2.add(jTextField4);
         jPanel2.add(tgllahir_separator1);
 
         alamatuser_panel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1333,7 +1329,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         alamatuser_panel1.add(alamat_label1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(alamatuser_panel1);
-        jPanel2.add(alamatuser_label1);
+        jPanel2.add(jTextField5);
         jPanel2.add(alamat_separator1);
 
         editprofile_panel.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -1352,10 +1348,10 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         jPanel5.add(backtoprofile, gridBagConstraints);
 
-        logOut2.setText("Konfirmasi");
+        konfirm.setText("Konfirmasi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        jPanel5.add(logOut2, gridBagConstraints);
+        jPanel5.add(konfirm, gridBagConstraints);
 
         editprofile_panel.add(jPanel5, java.awt.BorderLayout.SOUTH);
 
@@ -1795,6 +1791,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void backtoprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoprofileActionPerformed
         // TODO add your handling code here:
+        cardLayout.show(mainPanel, "profile_card");
     }//GEN-LAST:event_backtoprofileActionPerformed
 
 //set +keranjang biar keranjang bertambah
@@ -1882,7 +1879,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator alamat_separator;
     private javax.swing.JSeparator alamat_separator1;
     private javax.swing.JLabel alamatuser_label;
-    private javax.swing.JLabel alamatuser_label1;
     private javax.swing.JPanel alamatuser_panel;
     private javax.swing.JPanel alamatuser_panel1;
     private javax.swing.JButton backtoprofile;
@@ -1914,8 +1910,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel hp_profile1;
     private javax.swing.JSeparator hp_separator;
     private javax.swing.JSeparator hp_separator1;
+    private javax.swing.JTextField hp_textfield;
     private javax.swing.JLabel hpuser_profile;
-    private javax.swing.JLabel hpuser_profile1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1938,21 +1934,23 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel jeniskelamin_label;
     private javax.swing.JLabel jeniskelamin_label1;
     private javax.swing.JPanel jeniskelamin_profile;
     private javax.swing.JPanel jeniskelamin_profile1;
     private javax.swing.JLabel jeniskelaminuser_profile;
-    private javax.swing.JLabel jeniskelaminuser_profile1;
     private javax.swing.JSeparator jkuser_separator;
     private javax.swing.JSeparator jkuser_separator1;
     private javax.swing.JLabel kategori_label;
     private javax.swing.JPanel kategori_panel;
     private javax.swing.JLabel keranjang_label;
     private javax.swing.JPanel keranjang_panel;
+    private javax.swing.JButton konfirm;
     private javax.swing.JTable langkaTable;
     private javax.swing.JButton logOut;
-    private javax.swing.JButton logOut2;
     private javax.swing.JLabel logo_label;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuAboutUs;
@@ -1968,9 +1966,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel nama_panel1;
     private javax.swing.JSeparator nama_separator;
     private javax.swing.JSeparator nama_separator1;
+    private javax.swing.JTextField nama_textfield;
     private javax.swing.JLabel namasesi_label;
     private javax.swing.JLabel namauser_profile;
-    private javax.swing.JLabel namauser_profile1;
     private javax.swing.JPanel prod10;
     private javax.swing.JPanel prod3;
     private javax.swing.JButton prod3cart;
@@ -2014,7 +2012,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tgllahiruser_panel;
     private javax.swing.JPanel tgllahiruser_panel1;
     private javax.swing.JLabel tgllahiruser_profile;
-    private javax.swing.JLabel tgllahiruser_profile1;
     private javax.swing.JLabel wishlist_label;
     private javax.swing.JPanel wishlist_panel;
     // End of variables declaration//GEN-END:variables

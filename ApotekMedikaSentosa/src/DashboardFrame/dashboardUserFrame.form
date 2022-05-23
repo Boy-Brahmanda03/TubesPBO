@@ -2221,7 +2221,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="1"/>
-                        <Property name="rows" type="int" value="30"/>
+                        <Property name="rows" type="int" value="20"/>
                       </Layout>
                       <SubComponents>
                         <Container class="javax.swing.JPanel" name="dump_panel1">
@@ -2273,7 +2273,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="namauser_profile1">
+                        <Component class="javax.swing.JTextField" name="nama_textfield">
                         </Component>
                         <Component class="javax.swing.JSeparator" name="nama_separator1">
                         </Component>
@@ -2305,10 +2305,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="hpuser_profile1">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="2"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="hp_textfield">
                         </Component>
                         <Component class="javax.swing.JSeparator" name="hp_separator1">
                         </Component>
@@ -2340,7 +2337,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="jeniskelaminuser_profile1">
+                        <Component class="javax.swing.JTextField" name="jTextField3">
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jkuser_separator1">
                         </Component>
@@ -2372,10 +2369,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="tgllahiruser_profile1">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="2"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="jTextField4">
                         </Component>
                         <Component class="javax.swing.JSeparator" name="tgllahir_separator1">
                         </Component>
@@ -2407,7 +2401,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="alamatuser_label1">
+                        <Component class="javax.swing.JTextField" name="jTextField5">
                         </Component>
                         <Component class="javax.swing.JSeparator" name="alamat_separator1">
                         </Component>
@@ -2443,7 +2437,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JButton" name="logOut2">
+                        <Component class="javax.swing.JButton" name="konfirm">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Konfirmasi"/>
                           </Properties>
