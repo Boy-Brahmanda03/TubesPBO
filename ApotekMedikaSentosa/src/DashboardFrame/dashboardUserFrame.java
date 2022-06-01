@@ -5,7 +5,6 @@
 package DashboardFrame;
 
 import Database.KonekDatabase;
-import Database.Product;
 import Database.sessionLogin;
 import LoginFrame.loginUserFrame;
 import java.awt.CardLayout;
@@ -33,6 +32,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         namasesi_label.setText(sessionLogin.get_uname());
         cardLayout = (CardLayout) (mainPanel.getLayout());
         bodyscroll.setHorizontalScrollBar(new ScrollBarCustom());
+        bodyscroll.setVerticalScrollBar(new ScrollBarCustom());
         
     }
     /**
@@ -129,7 +129,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         kategori_panel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         ObatGenerik = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
         generikTable = new javax.swing.JTable();
         herbal = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -143,14 +143,36 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         barang = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         barangTable = new javax.swing.JTable();
-        keranjang_panel = new javax.swing.JPanel();
-        keranjang = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        keranjangTable = new javax.swing.JTable();
-        jPanel10 = new javax.swing.JPanel();
-        beli = new javax.swing.JButton();
+        transaksi_panel = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        dateTran = new javax.swing.JLabel();
+        dateDetail = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel25 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         daftartransaki_panel = new javax.swing.JPanel();
         tentangkami_panel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -191,8 +213,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         profile_label = new javax.swing.JLabel();
         menuKategori = new javax.swing.JPanel();
         kategori_label = new javax.swing.JLabel();
-        menuKeranjang = new javax.swing.JPanel();
-        keranjang_label = new javax.swing.JLabel();
+        menuTransaksi = new javax.swing.JPanel();
+        transaksi_label = new javax.swing.JLabel();
         menuDaftarTransaksi = new javax.swing.JPanel();
         daftartransaksi_label = new javax.swing.JLabel();
         menuAboutUs = new javax.swing.JPanel();
@@ -202,6 +224,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         setTitle("APOTEK");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(1000, 800));
+        setMixingCutoutShape(null);
         setPreferredSize(new java.awt.Dimension(1000, 800));
         setSize(new java.awt.Dimension(1000, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -237,7 +261,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             .addGroup(searchbar_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo_label)
-                .addContainerGap(579, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         searchbar_panelLayout.setVerticalGroup(
             searchbar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +305,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.CardLayout());
 
         dashboard_panel.setBackground(new java.awt.Color(255, 255, 255));
-        dashboard_panel.setLayout(new java.awt.GridLayout(2, 0));
+        dashboard_panel.setLayout(new java.awt.GridLayout(2, 1));
 
         head.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -304,11 +328,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3.setBackground(new java.awt.Color(255, 255, 255));
         prod3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
-        prod3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                prod3MouseClicked(evt);
-            }
-        });
 
         PIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardFrame/gambar/citicoline.jpeg"))); // NOI18N
 
@@ -319,10 +338,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart.setText("+keranjang");
+        prod3cart.setText("+transaksi");
         prod3cart.setFocusPainted(false);
         prod3cart.setFocusTraversalKeysEnabled(false);
         prod3cart.setRequestFocusEnabled(false);
+        prod3cart.setSelected(true);
         prod3cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 prod3cartMouseClicked(evt);
@@ -332,11 +352,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 prod3cartMouseExited(evt);
-            }
-        });
-        prod3cart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prod3cartActionPerformed(evt);
             }
         });
 
@@ -397,7 +412,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart1.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart1.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart1.setText("+keranjang");
+        prod3cart1.setText("transaksi");
         prod3cart1.setFocusPainted(false);
         prod3cart1.setFocusTraversalKeysEnabled(false);
         prod3cart1.setRequestFocusEnabled(false);
@@ -471,7 +486,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart2.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart2.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart2.setText("+keranjang");
+        prod3cart2.setText("+transaksi");
         prod3cart2.setFocusPainted(false);
         prod3cart2.setFocusTraversalKeysEnabled(false);
         prod3cart2.setRequestFocusEnabled(false);
@@ -543,7 +558,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart3.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart3.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart3.setText("+keranjang");
+        prod3cart3.setText("+transaksi");
         prod3cart3.setFocusPainted(false);
         prod3cart3.setFocusTraversalKeysEnabled(false);
         prod3cart3.setRequestFocusEnabled(false);
@@ -615,7 +630,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart4.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart4.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart4.setText("+keranjang");
+        prod3cart4.setText("+transaksi");
         prod3cart4.setFocusPainted(false);
         prod3cart4.setFocusTraversalKeysEnabled(false);
         prod3cart4.setRequestFocusEnabled(false);
@@ -697,7 +712,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart5.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart5.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart5.setText("+keranjang");
+        prod3cart5.setText("+transaksi");
         prod3cart5.setFocusPainted(false);
         prod3cart5.setFocusTraversalKeysEnabled(false);
         prod3cart5.setRequestFocusEnabled(false);
@@ -903,7 +918,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane4.setBorder(null);
+        jScrollPane10.setBorder(null);
 
         generikTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -932,24 +947,24 @@ public class dashboardUserFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        generikTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        generikTable.setColumnSelectionAllowed(true);
+        generikTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         generikTable.setFillsViewportHeight(true);
         generikTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        generikTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         generikTable.setShowGrid(false);
-        jScrollPane4.setViewportView(generikTable);
-        generikTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        generikTable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                generikTableComponentShown(evt);
+            }
+        });
+        jScrollPane10.setViewportView(generikTable);
         if (generikTable.getColumnModel().getColumnCount() > 0) {
             generikTable.getColumnModel().getColumn(0).setResizable(false);
             generikTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-            generikTable.getColumnModel().getColumn(1).setPreferredWidth(250);
+            generikTable.getColumnModel().getColumn(1).setPreferredWidth(150);
             generikTable.getColumnModel().getColumn(2).setPreferredWidth(100);
             generikTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            generikTable.getColumnModel().getColumn(3).setHeaderValue("Aturan Pakai");
             generikTable.getColumnModel().getColumn(4).setPreferredWidth(200);
             generikTable.getColumnModel().getColumn(5).setPreferredWidth(200);
-            generikTable.getColumnModel().getColumn(5).setHeaderValue("Tanggal Kadaluarsa");
             generikTable.getColumnModel().getColumn(6).setPreferredWidth(100);
         }
 
@@ -957,13 +972,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         ObatGenerik.setLayout(ObatGenerikLayout);
         ObatGenerikLayout.setHorizontalGroup(
             ObatGenerikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
         );
         ObatGenerikLayout.setVerticalGroup(
             ObatGenerikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ObatGenerikLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 217, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Obat Generik", ObatGenerik);
@@ -1034,7 +1049,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             .addGroup(herbalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Herbal", herbal);
@@ -1243,107 +1258,129 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         mainPanel.add(kategori_panel, "kategori_card");
 
-        keranjang_panel.setBackground(new java.awt.Color(255, 255, 255));
-        keranjang_panel.setLayout(new javax.swing.BoxLayout(keranjang_panel, javax.swing.BoxLayout.Y_AXIS));
+        transaksi_panel.setBackground(new java.awt.Color(255, 255, 255));
+        transaksi_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        keranjang.setBackground(new java.awt.Color(255, 255, 255));
-        keranjang.setFont(new java.awt.Font("Audrey", 0, 18)); // NOI18N
-        keranjang.setText("Keranjang ");
-        keranjang.setAlignmentX(0.5F);
-        keranjang.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                keranjangComponentShown(evt);
+        jLabel16.setFont(new java.awt.Font("Audrey", 0, 18)); // NOI18N
+        jLabel16.setText("Detail Produk");
+        transaksi_panel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        dateTran.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        dateTran.setText("Tanggal :");
+        transaksi_panel.add(dateTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+
+        dateDetail.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        dateDetail.setText("jLabel18");
+        transaksi_panel.add(dateDetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        transaksi_panel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 810, 30));
+
+        jLabel15.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel15.setText("Nama ");
+        transaksi_panel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jTextField1.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 250, 40));
+
+        jTextField2.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 250, 40));
+
+        jLabel17.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel17.setText("Telepon");
+        transaksi_panel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel18.setText("Alamat");
+        transaksi_panel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jTextField3.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 250, 40));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        transaksi_panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 20, 290));
+
+        jLabel19.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel19.setText("Id Produk");
+        transaksi_panel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
+
+        jTextField4.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
             }
         });
-        keranjang_panel.add(keranjang);
+        transaksi_panel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
 
-        jScrollPane5.setBorder(null);
+        jLabel20.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel20.setText("Nama");
+        transaksi_panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
-        keranjangTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTextField5.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 40));
+
+        jLabel21.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel21.setText("Harga");
+        transaksi_panel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+
+        jTextField6.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 250, 40));
+
+        jLabel22.setFont(new java.awt.Font("Audrey", 0, 18)); // NOI18N
+        jLabel22.setText("TRANSAKSI");
+        transaksi_panel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Audrey", 0, 18)); // NOI18N
+        jLabel23.setText("Biodata ");
+        transaksi_panel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jTextField7.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 250, 40));
+
+        jLabel24.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jLabel24.setText("Jumlah");
+        transaksi_panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
+        transaksi_panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 830, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No", "Produk", "Harga", "Jumlah", "Subtotal"
+                "Nama", "Harga", "Jumlah", "Total Harga"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        keranjangTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        keranjangTable.setFillsViewportHeight(true);
-        keranjangTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        keranjangTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        keranjangTable.setShowGrid(false);
-        keranjangTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                keranjangTableMouseClicked(evt);
-            }
-        });
-        jScrollPane5.setViewportView(keranjangTable);
-        keranjangTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (keranjangTable.getColumnModel().getColumnCount() > 0) {
-            keranjangTable.getColumnModel().getColumn(0).setResizable(false);
-            keranjangTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-            keranjangTable.getColumnModel().getColumn(1).setPreferredWidth(250);
-            keranjangTable.getColumnModel().getColumn(2).setPreferredWidth(100);
-            keranjangTable.getColumnModel().getColumn(3).setPreferredWidth(200);
-            keranjangTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-        }
+        jTable1.setSelectionBackground(new java.awt.Color(0, 204, 51));
+        jScrollPane2.setViewportView(jTable1);
 
-        keranjang_panel.add(jScrollPane5);
+        transaksi_panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 540, 290));
 
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel25.setFont(new java.awt.Font("Audrey", 0, 18)); // NOI18N
+        jLabel25.setText("Total Pembayaran");
+        transaksi_panel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, -1, 20));
 
-        beli.setText("Beli");
+        jTextField8.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        transaksi_panel.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 210, 40));
 
-        jLabel15.setText("Total Bayar");
+        jButton1.setText("Batal");
+        transaksi_panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, 110, -1));
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(532, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(beli, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(beli)
-                .addContainerGap(520, Short.MAX_VALUE))
-        );
+        jButton2.setText("Tambah");
+        transaksi_panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 90, -1));
 
-        keranjang_panel.add(jPanel10);
+        jButton3.setText("Bayar");
+        transaksi_panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 110, -1));
 
-        mainPanel.add(keranjang_panel, "keranjang_card");
+        mainPanel.add(transaksi_panel, "keranjang_card");
 
         daftartransaki_panel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1351,11 +1388,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         daftartransaki_panel.setLayout(daftartransaki_panelLayout);
         daftartransaki_panelLayout.setHorizontalGroup(
             daftartransaki_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 842, Short.MAX_VALUE)
+            .addGap(0, 840, Short.MAX_VALUE)
         );
         daftartransaki_panelLayout.setVerticalGroup(
             daftartransaki_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1060, Short.MAX_VALUE)
+            .addGap(0, 695, Short.MAX_VALUE)
         );
 
         mainPanel.add(daftartransaki_panel, "daftartransak_panel");
@@ -1516,7 +1553,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         );
         batasPanelLayout.setVerticalGroup(
             batasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 61, Short.MAX_VALUE)
+            .addGap(0, 37, Short.MAX_VALUE)
         );
 
         menuPanel.add(batasPanel);
@@ -1566,25 +1603,25 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         menuPanel.add(menuKategori);
 
-        menuKeranjang.setBackground(new java.awt.Color(255, 255, 255));
-        menuKeranjang.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuTransaksi.setBackground(new java.awt.Color(255, 255, 255));
+        menuTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuKeranjangMouseClicked(evt);
+                menuTransaksiMouseClicked(evt);
             }
         });
-        menuKeranjang.setLayout(new java.awt.GridBagLayout());
+        menuTransaksi.setLayout(new java.awt.GridBagLayout());
 
-        keranjang_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        keranjang_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        keranjang_label.setText("Keranjang");
-        keranjang_label.addMouseListener(new java.awt.event.MouseAdapter() {
+        transaksi_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        transaksi_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        transaksi_label.setText("Transaksi");
+        transaksi_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                keranjang_labelMouseClicked(evt);
+                transaksi_labelMouseClicked(evt);
             }
         });
-        menuKeranjang.add(keranjang_label, new java.awt.GridBagConstraints());
+        menuTransaksi.add(transaksi_label, new java.awt.GridBagConstraints());
 
-        menuPanel.add(menuKeranjang);
+        menuPanel.add(menuTransaksi);
 
         menuDaftarTransaksi.setBackground(new java.awt.Color(255, 255, 255));
         menuDaftarTransaksi.setLayout(new java.awt.GridBagLayout());
@@ -1660,15 +1697,23 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_kategori_labelMouseClicked
 
 //keranjang set
-    private void keranjang_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keranjang_labelMouseClicked
+    private void transaksi_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaksi_labelMouseClicked
         // TODO add your handling code here:
         cardLayout.show(mainPanel, "keranjang_card");
-    }//GEN-LAST:event_keranjang_labelMouseClicked
+        
+        jTextField1.setText(sessionLogin.get_name());
+        jTextField2.setText(sessionLogin.get_nohp());
+        jTextField3.setText(sessionLogin.get_alamat());
+    }//GEN-LAST:event_transaksi_labelMouseClicked
 
-    private void menuKeranjangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuKeranjangMouseClicked
+    private void menuTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTransaksiMouseClicked
         // TODO add your handling code here:
         cardLayout.show(mainPanel, "keranjang_card");
-    }//GEN-LAST:event_menuKeranjangMouseClicked
+        jTextField1.setText(sessionLogin.get_name());
+        jTextField2.setText(sessionLogin.get_nohp());
+        jTextField3.setText(sessionLogin.get_alamat());
+        
+    }//GEN-LAST:event_menuTransaksiMouseClicked
 
 // Tabel Obat Generik
     private void ObatGenerikComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ObatGenerikComponentShown
@@ -1724,7 +1769,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) langkaTable.getModel();
         model.setRowCount(0);
         try {
-            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 1";
+            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 3";
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
@@ -1747,7 +1792,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) suplemenTable.getModel();
         model.setRowCount(0);
         try {
-            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 1";
+            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 4";
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
@@ -1977,10 +2022,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         cardLayout.show(mainPanel, "tentangkami_card");
     }//GEN-LAST:event_aboutus_labelMouseClicked
 
-    private void keranjangTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keranjangTableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_keranjangTableMouseClicked
-
     private void barangComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_barangComponentShown
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) barangTable.getModel();
@@ -2000,69 +2041,67 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_barangComponentShown
 
-    private void keranjangComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_keranjangComponentShown
-        // TODO add your handling code her
-        DefaultTableModel model = (DefaultTableModel) keranjangTable.getModel();
-        model.setRowCount(0);
-        try {
-            String query = "Select * from db_tubesPBO.detail_keranjang where id_keranjang = 1";
-            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
-            ResultSet rs = konekStatement.executeQuery();
-            while (rs.next()){
-                
-                String nama = rs.getString(2);
-                String harga = rs.getString(5);
-                String dosis = rs.getString(6);
-                String aturan = rs.getString(7);
-                String efek = rs.getString(8);
-                String exDate = rs.getString(9);
-                model.addRow(new Object[]{keranjangTable.getRowCount()+1, nama, dosis, aturan, efek, exDate, harga, null});
-            }
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_keranjangComponentShown
-
-    private void prod3cartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prod3cartActionPerformed
-        try {
-            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 3";
-            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
-            ResultSet rs = konekStatement.executeQuery();
-            while (rs.next()){
-                String nama = rs.getString(2);
-                String harga = rs.getString(5);
-                String dosis = rs.getString(6);
-                String aturan = rs.getString(7);
-                String efek = rs.getString(8);
-                String exDate = rs.getString(9);
-                Product.set_prodname(nama);
-                Product.set_harga(Integer.parseInt(harga));
-            }
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_prod3cartActionPerformed
-
     private void prod3cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cartMouseClicked
-
+        // TODO add your handling code here:
+        int jumlah = 0;
+        String prod = prod3name.getText();
+        String price = prod3price.getText();
+        jumlah += 1;
+        int harga = Integer.parseInt(price);
+        int mul;
+        String query = "Insert into transaksi (id_obat, nama_obat, jumlah_obat, harga_obat, total_bayar) values (?,?,?,?,?)";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            konekStatement.setString(1, "3");
+            konekStatement.setString(2, prod);
+            konekStatement.setString(3, String.valueOf(jumlah));
+            konekStatement.setString(4, price);
+            mul = jumlah * harga;
+            konekStatement.setString(5,String.valueOf(harga));
+            konekStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_prod3cartMouseClicked
 
-    private void prod3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3MouseClicked
-        // TODO add your handling code here
-        String harga =  String.valueOf(Product.get_harga());
+    
+//set Barang transaksi
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+        String id = jTextField4.getText();
         try {
-                PreparedStatement regisQuery = KonekDatabase.getConnection().prepareStatement("insert into tb_detail_keranjang (id_keranjang,nama_obat,jumlah_obat,subtotal) values (?,?,?,?)");
-                regisQuery.setString(1, "1");
-                regisQuery.setString(2, Product.get_prodname());
-                regisQuery.setString(3, "1");
-                regisQuery.setString(4, harga);
-                regisQuery.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Data Masuk Ke Keranjang");   
-            
-        } catch (SQLException e){
+            String query = "Select * from db_tubesPBO.obat where id_obat like" + id + "%";
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs = konekStatement.executeQuery();
+            if (rs.next()) {
+               jTextField5.setText(rs.getString(2));
+               jTextField6.setText(rs.getString(5));
+               jTextField4.setText(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    //set kategori barang
+    private void generikTableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_generikTableComponentShown
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) generikTable.getModel();
+        model.setRowCount(0);
+        try {
+            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 1";
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs = konekStatement.executeQuery();
+            while (rs.next()){
+                String nama = rs.getString(2);
+                String stok = rs.getString(3);
+                String harga = rs.getString(4);
+                model.addRow(new Object[]{barangTable.getRowCount()+1, nama, stok, harga});
+            }
+        } catch(SQLException e){
             e.printStackTrace();
         }
-    }//GEN-LAST:event_prod3MouseClicked
+    }//GEN-LAST:event_generikTableComponentShown
 
     
 
@@ -2156,13 +2195,14 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel barang;
     private javax.swing.JTable barangTable;
     private javax.swing.JPanel batasPanel;
-    private javax.swing.JButton beli;
     private javax.swing.JPanel bgPanel;
     private javax.swing.JPanel body;
     private javax.swing.JScrollPane bodyscroll;
     private javax.swing.JPanel daftartransaki_panel;
     private javax.swing.JLabel daftartransaksi_label;
     private javax.swing.JPanel dashboard_panel;
+    private javax.swing.JLabel dateDetail;
+    private javax.swing.JLabel dateTran;
     private javax.swing.JLabel dump;
     private javax.swing.JLabel dump1;
     private javax.swing.JPanel dump_panel;
@@ -2185,6 +2225,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator hp_separator1;
     private javax.swing.JTextField hp_textfield;
     private javax.swing.JLabel hpuser_profile;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2192,7 +2235,17 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2201,32 +2254,38 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel jeniskelamin_label;
     private javax.swing.JPanel jeniskelamin_profile;
     private javax.swing.JLabel jeniskelaminuser_profile;
     private javax.swing.JSeparator jkuser_separator;
     private javax.swing.JLabel kategori_label;
     private javax.swing.JPanel kategori_panel;
-    private javax.swing.JLabel keranjang;
-    private javax.swing.JTable keranjangTable;
-    private javax.swing.JLabel keranjang_label;
-    private javax.swing.JPanel keranjang_panel;
     private javax.swing.JButton konfirm;
     private javax.swing.JTable langkaTable;
     private javax.swing.JButton logOut;
@@ -2235,9 +2294,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel menuAboutUs;
     private javax.swing.JPanel menuDaftarTransaksi;
     private javax.swing.JPanel menuKategori;
-    private javax.swing.JPanel menuKeranjang;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel menuProfile;
+    private javax.swing.JPanel menuTransaksi;
     private javax.swing.JLabel nama_label;
     private javax.swing.JLabel nama_label1;
     private javax.swing.JLabel nama_label2;
@@ -2285,5 +2344,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator tgllahir_separator;
     private javax.swing.JPanel tgllahiruser_panel;
     private javax.swing.JLabel tgllahiruser_profile;
+    private javax.swing.JLabel transaksi_label;
+    private javax.swing.JPanel transaksi_panel;
     // End of variables declaration//GEN-END:variables
 }

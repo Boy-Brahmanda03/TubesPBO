@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Database.sessionLogin;
+import java.awt.Color;
 
 /**
  *
@@ -48,6 +49,7 @@ public class loginUserFrame extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         createAccount = new javax.swing.JLabel();
         loginAsAdmin = new javax.swing.JLabel();
+        showPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -67,8 +69,18 @@ public class loginUserFrame extends javax.swing.JFrame {
         passKet2.setText("USERNAME");
         formPanel.add(passKet2);
 
+        unameField.setForeground(new java.awt.Color(153, 153, 153));
+        unameField.setText("ENTER USERNAME");
         unameField.setMaximumSize(new java.awt.Dimension(168, 25));
         unameField.setPreferredSize(new java.awt.Dimension(168, 25));
+        unameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                unameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                unameFieldFocusLost(evt);
+            }
+        });
         formPanel.add(unameField);
 
         passKet3.setFont(new java.awt.Font("LEMON MILK", 0, 13)); // NOI18N
@@ -76,9 +88,19 @@ public class loginUserFrame extends javax.swing.JFrame {
         passKet3.setText("PASSWORD");
         formPanel.add(passKet3);
 
+        loginpassField.setForeground(new java.awt.Color(153, 153, 153));
+        loginpassField.setText("ENTER PASSWORD");
         loginpassField.setToolTipText("");
         loginpassField.setMaximumSize(new java.awt.Dimension(168, 25));
         loginpassField.setMinimumSize(new java.awt.Dimension(168, 25));
+        loginpassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                loginpassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginpassFieldFocusLost(evt);
+            }
+        });
         formPanel.add(loginpassField);
 
         registerLabel.setBackground(new java.awt.Color(3, 166, 44));
@@ -114,6 +136,15 @@ public class loginUserFrame extends javax.swing.JFrame {
             }
         });
 
+        showPassword.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        showPassword.setForeground(new java.awt.Color(255, 255, 255));
+        showPassword.setText("Show Password");
+        showPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout backFormPanelLayout = new javax.swing.GroupLayout(backFormPanel);
         backFormPanel.setLayout(backFormPanelLayout);
         backFormPanelLayout.setHorizontalGroup(
@@ -134,7 +165,9 @@ public class loginUserFrame extends javax.swing.JFrame {
                         .addComponent(createAccount))
                     .addGroup(backFormPanelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(backFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(showPassword)
+                            .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         backFormPanelLayout.setVerticalGroup(
@@ -144,7 +177,9 @@ public class loginUserFrame extends javax.swing.JFrame {
                 .addComponent(registerLabel)
                 .addGap(33, 33, 33)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showPassword)
+                .addGap(30, 30, 30)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,6 +269,47 @@ public class loginUserFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_loginAsAdminMouseClicked
 
+    private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordActionPerformed
+        // TODO add your handling code here:
+        if (showPassword.isSelected()) {
+            loginpassField.setEchoChar((char)0);
+        } else {
+            loginpassField.setEchoChar('*');
+        }
+    }//GEN-LAST:event_showPasswordActionPerformed
+
+    private void unameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_unameFieldFocusGained
+        // TODO add your handling code here:
+        if (unameField.getText().equals("ENTER USERNAME")) {
+            unameField.setText("");
+            unameField.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_unameFieldFocusGained
+
+    private void unameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_unameFieldFocusLost
+        // TODO add your handling code here:
+        if (unameField.getText().equals("")) {
+            unameField.setText("ENTER USERN AME");
+            unameField.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_unameFieldFocusLost
+
+    private void loginpassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginpassFieldFocusGained
+        // TODO add your handling code here:
+        if (loginpassField.getText().equals("ENTER PASSWORD")) {
+            loginpassField.setText("");
+            loginpassField.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_loginpassFieldFocusGained
+
+    private void loginpassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginpassFieldFocusLost
+        // TODO add your handling code here:
+        if (unameField.getText().equals("")) {
+            unameField.setText("ENTER PASSWORD");
+            unameField.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_loginpassFieldFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -296,6 +372,7 @@ public class loginUserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel passKet2;
     private javax.swing.JLabel passKet3;
     private javax.swing.JLabel registerLabel;
+    private javax.swing.JCheckBox showPassword;
     private javax.swing.JTextField unameField;
     // End of variables declaration//GEN-END:variables
 }
