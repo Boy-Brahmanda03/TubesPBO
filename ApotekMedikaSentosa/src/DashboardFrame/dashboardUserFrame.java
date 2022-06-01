@@ -12,8 +12,11 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 
 /**
  *
@@ -25,7 +28,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
      * Creates new form BackFrame
      */
     CardLayout cardLayout;
-    
+    public int finaltotal = 0;
     boolean cek = true;
     public dashboardUserFrame() {
         initComponents();
@@ -34,6 +37,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         bodyscroll.setHorizontalScrollBar(new ScrollBarCustom());
         bodyscroll.setVerticalScrollBar(new ScrollBarCustom());
         
+        SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        dateDetail.setText(dformat.format(date));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,7 +162,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        idprod = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -167,7 +173,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        transTable = new javax.swing.JTable();
         jLabel25 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -1302,13 +1308,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jLabel19.setText("Id Produk");
         transaksi_panel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
-        jTextField4.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        idprod.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        idprod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                idprodActionPerformed(evt);
             }
         });
-        transaksi_panel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
+        transaksi_panel.add(idprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel20.setText("Nama");
@@ -1340,7 +1346,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         transaksi_panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
         transaksi_panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 830, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        transTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1359,8 +1365,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setSelectionBackground(new java.awt.Color(0, 204, 51));
-        jScrollPane2.setViewportView(jTable1);
+        transTable.setSelectionBackground(new java.awt.Color(0, 204, 51));
+        jScrollPane2.setViewportView(transTable);
 
         transaksi_panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 540, 290));
 
@@ -1375,6 +1381,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         transaksi_panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, 110, -1));
 
         jButton2.setText("Tambah");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         transaksi_panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 90, -1));
 
         jButton3.setText("Bayar");
@@ -2067,21 +2078,28 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     
 //set Barang transaksi
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void idprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idprodActionPerformed
         // TODO add your handling code here:
-        String id = jTextField4.getText();
+        String prod = idprod.getText();
         try {
-            String query = "Select * from db_tubesPBO.obat where id_obat like" + id + "%";
+            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = " + prod;
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konekStatement.executeQuery();
             if (rs.next()) {
                jTextField5.setText(rs.getString(2));
                jTextField6.setText(rs.getString(5));
-               jTextField4.setText(rs.getString(1));
+               jTextField7.setText("1");
+            } else {
+               jTextField5.setText("");
+               jTextField6.setText("");
+               jTextField7.setText("");
             }
+            
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Test");
         }
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        
+    }//GEN-LAST:event_idprodActionPerformed
 
     //set kategori barang
     private void generikTableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_generikTableComponentShown
@@ -2102,6 +2120,19 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_generikTableComponentShown
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int harga = Integer.parseInt(jTextField6.getText());
+        int qty = Integer.parseInt(jTextField7.getText());
+        int total = harga * qty;
+        DefaultTableModel model = (DefaultTableModel) transTable.getModel();
+        model.setRowCount(0);
+        model.addRow(new Object[]{jTextField5.getText(), harga, qty, total});
+        finaltotal = finaltotal + total;
+        String finaltotal1 = String.valueOf(finaltotal);
+        jTextField8.setText(finaltotal1);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
 
@@ -2225,6 +2256,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator hp_separator1;
     private javax.swing.JTextField hp_textfield;
     private javax.swing.JLabel hpuser_profile;
+    private javax.swing.JTextField idprod;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2270,12 +2302,10 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
@@ -2344,6 +2374,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator tgllahir_separator;
     private javax.swing.JPanel tgllahiruser_panel;
     private javax.swing.JLabel tgllahiruser_profile;
+    private javax.swing.JTable transTable;
     private javax.swing.JLabel transaksi_label;
     private javax.swing.JPanel transaksi_panel;
     // End of variables declaration//GEN-END:variables
