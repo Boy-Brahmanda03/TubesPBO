@@ -2081,14 +2081,27 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private void idprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idprodActionPerformed
         // TODO add your handling code here:
         String prod = idprod.getText();
+        String name = jTextField5.getText();
+        DefaultTableModel model = (DefaultTableModel) transTable.getModel();
+        model.setRowCount(0);
+        
         try {
-            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = " + prod;
+            String query = "Select * from db_tubesPBO.obat where id_obat = " + prod;
+            String qr = "Selec * from obat where nama_obat like " + name;
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            PreparedStatement ks = KonekDatabase.getConnection().prepareStatement(qr);
             ResultSet rs = konekStatement.executeQuery();
-            if (rs.next()) {
+            ResultSet res = ks.executeQuery();
+            //rs.next() ||
+            if (res.next()) {
+                
+               //idprod.setText(rs.getString(1));
                jTextField5.setText(rs.getString(2));
                jTextField6.setText(rs.getString(5));
                jTextField7.setText("1");
+               //jTextField5.setText(rs.getString(2));
+               //jTextField6.setText(rs.getString(5));
+               //jTextField7.setText("1");
             } else {
                jTextField5.setText("");
                jTextField6.setText("");
