@@ -28,6 +28,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
      * Creates new form BackFrame
      */
     CardLayout cardLayout;
+    DefaultTableModel modeltransModel;
     public int finaltotal = 0;
     boolean cek = true;
     public dashboardUserFrame() {
@@ -40,6 +41,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         dateDetail.setText(dformat.format(date));
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        modeltransModel.setRowCount(0);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,6 +183,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         daftartransaki_panel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        transTable1 = new javax.swing.JTable();
         tentangkami_panel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -233,7 +238,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 800));
         setMixingCutoutShape(null);
         setPreferredSize(new java.awt.Dimension(1000, 800));
-        setSize(new java.awt.Dimension(1000, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -267,7 +271,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             .addGroup(searchbar_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo_label)
-                .addContainerGap(577, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
         searchbar_panelLayout.setVerticalGroup(
             searchbar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,11 +422,14 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         prod3cart1.setBackground(new java.awt.Color(255, 255, 255));
         prod3cart1.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        prod3cart1.setText("transaksi");
+        prod3cart1.setText("+transaksi");
         prod3cart1.setFocusPainted(false);
         prod3cart1.setFocusTraversalKeysEnabled(false);
         prod3cart1.setRequestFocusEnabled(false);
         prod3cart1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod3cart1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 prod3cart1MouseEntered(evt);
             }
@@ -497,6 +504,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         prod3cart2.setFocusTraversalKeysEnabled(false);
         prod3cart2.setRequestFocusEnabled(false);
         prod3cart2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod3cart2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 prod3cart2MouseEntered(evt);
             }
@@ -569,6 +579,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         prod3cart3.setFocusTraversalKeysEnabled(false);
         prod3cart3.setRequestFocusEnabled(false);
         prod3cart3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod3cart3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 prod3cart3MouseEntered(evt);
             }
@@ -641,6 +654,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         prod3cart4.setFocusTraversalKeysEnabled(false);
         prod3cart4.setRequestFocusEnabled(false);
         prod3cart4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod3cart4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 prod3cart4MouseEntered(evt);
             }
@@ -723,6 +739,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         prod3cart5.setFocusTraversalKeysEnabled(false);
         prod3cart5.setRequestFocusEnabled(false);
         prod3cart5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod3cart5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 prod3cart5MouseEntered(evt);
             }
@@ -984,7 +1003,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             ObatGenerikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ObatGenerikLayout.createSequentialGroup()
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 217, Short.MAX_VALUE))
+                .addGap(0, 582, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Obat Generik", ObatGenerik);
@@ -1055,7 +1074,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             .addGroup(herbalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Herbal", herbal);
@@ -1225,6 +1244,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         barangTable.setFillsViewportHeight(true);
         barangTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
         barangTable.setShowGrid(false);
+        barangTable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                barangTableComponentShown(evt);
+            }
+        });
         jScrollPane8.setViewportView(barangTable);
         if (barangTable.getColumnModel().getColumnCount() > 0) {
             barangTable.getColumnModel().getColumn(0).setResizable(false);
@@ -1309,11 +1333,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         transaksi_panel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
         idprod.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        idprod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idprodActionPerformed(evt);
-            }
-        });
         transaksi_panel.add(idprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
@@ -1321,6 +1340,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         transaksi_panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
         jTextField5.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         transaksi_panel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 40));
 
         jLabel21.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
@@ -1365,8 +1389,14 @@ public class dashboardUserFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        transTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        transTable.setFillsViewportHeight(true);
         transTable.setSelectionBackground(new java.awt.Color(0, 204, 51));
         jScrollPane2.setViewportView(transTable);
+        if (transTable.getColumnModel().getColumnCount() > 0) {
+            transTable.getColumnModel().getColumn(2).setHeaderValue("Jumlah");
+            transTable.getColumnModel().getColumn(3).setHeaderValue("Total Harga");
+        }
 
         transaksi_panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 540, 290));
 
@@ -1377,10 +1407,33 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jTextField8.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         transaksi_panel.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 210, 40));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Batal");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         transaksi_panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, 110, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Tambah");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1388,22 +1441,78 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         });
         transaksi_panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 90, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Bayar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         transaksi_panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 110, -1));
 
         mainPanel.add(transaksi_panel, "keranjang_card");
 
         daftartransaki_panel.setBackground(new java.awt.Color(255, 255, 255));
+        daftartransaki_panel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                daftartransaki_panelComponentShown(evt);
+            }
+        });
+
+        transTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "No", "Tanggal Transaksi", "Total Biaya"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        transTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        transTable1.setFillsViewportHeight(true);
+        transTable1.setSelectionBackground(new java.awt.Color(0, 204, 51));
+        transTable1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                transTable1ComponentShown(evt);
+            }
+        });
+        jScrollPane3.setViewportView(transTable1);
+        if (transTable1.getColumnModel().getColumnCount() > 0) {
+            transTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
+        }
 
         javax.swing.GroupLayout daftartransaki_panelLayout = new javax.swing.GroupLayout(daftartransaki_panel);
         daftartransaki_panel.setLayout(daftartransaki_panelLayout);
         daftartransaki_panelLayout.setHorizontalGroup(
             daftartransaki_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftartransaki_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                .addContainerGap())
         );
         daftartransaki_panelLayout.setVerticalGroup(
             daftartransaki_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGroup(daftartransaki_panelLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 679, Short.MAX_VALUE))
         );
 
         mainPanel.add(daftartransaki_panel, "daftartransak_panel");
@@ -1564,7 +1673,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         );
         batasPanelLayout.setVerticalGroup(
             batasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+            .addGap(0, 61, Short.MAX_VALUE)
         );
 
         menuPanel.add(batasPanel);
@@ -1635,11 +1744,21 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         menuPanel.add(menuTransaksi);
 
         menuDaftarTransaksi.setBackground(new java.awt.Color(255, 255, 255));
+        menuDaftarTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuDaftarTransaksiMouseClicked(evt);
+            }
+        });
         menuDaftarTransaksi.setLayout(new java.awt.GridBagLayout());
 
         daftartransaksi_label.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         daftartransaksi_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         daftartransaksi_label.setText("Daftar Transaksi");
+        daftartransaksi_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftartransaksi_labelMouseClicked(evt);
+            }
+        });
         menuDaftarTransaksi.add(daftartransaksi_label, new java.awt.GridBagConstraints());
 
         menuPanel.add(menuDaftarTransaksi);
@@ -1707,7 +1826,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         cardLayout.show(mainPanel, "kategori_card");
     }//GEN-LAST:event_kategori_labelMouseClicked
 
-//keranjang set
+//transaksi set
     private void transaksi_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaksi_labelMouseClicked
         // TODO add your handling code here:
         cardLayout.show(mainPanel, "keranjang_card");
@@ -1715,6 +1834,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jTextField1.setText(sessionLogin.get_name());
         jTextField2.setText(sessionLogin.get_nohp());
         jTextField3.setText(sessionLogin.get_alamat());
+        
     }//GEN-LAST:event_transaksi_labelMouseClicked
 
     private void menuTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTransaksiMouseClicked
@@ -1723,6 +1843,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jTextField1.setText(sessionLogin.get_name());
         jTextField2.setText(sessionLogin.get_nohp());
         jTextField3.setText(sessionLogin.get_alamat());
+        
         
     }//GEN-LAST:event_menuTransaksiMouseClicked
 
@@ -1828,35 +1949,35 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
 //set dashboard
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:  
+        // TODO add your handling code here:
         try {
             //prod1
-            String prod = "Select * from db_tubesPBO.obat where id_obat = 1";
+            String prod = "Select * from db_tubesPBO.obat where id_obat = 3";
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(prod);
             
             
             //prod2
-            String prod1 = "Select * from db_tubesPBO.obat where id_obat = 6";
+            String prod1 = "Select * from db_tubesPBO.obat where id_obat = 4";
             PreparedStatement konekStatement1 = KonekDatabase.getConnection().prepareStatement(prod1);
                 
             
             //prod3
-            String prod2 = "Select * from db_tubesPBO.obat where id_obat = 9";
+            String prod2 = "Select * from db_tubesPBO.obat where id_obat = 7";
             PreparedStatement konekStatement2 = KonekDatabase.getConnection().prepareStatement(prod2);
             
             
             //prod4
-            String prod3 = "Select * from db_tubesPBO.obat where id_obat = 16";
+            String prod3 = "Select * from db_tubesPBO.obat where id_obat = 10";
             PreparedStatement konekStatement3 = KonekDatabase.getConnection().prepareStatement(prod3);
             
             
             //prod5
-            String prod4 = "Select * from db_tubesPBO.obat where id_obat = 11";
+            String prod4 = "Select * from db_tubesPBO.obat where id_obat = 8";
             PreparedStatement konekStatement4 = KonekDatabase.getConnection().prepareStatement(prod4);
             
             
             //prod6
-            String prod5 = "Select * from db_tubesPBO.obat where id_obat = 7";
+            String prod5 = "Select * from db_tubesPBO.obat where id_obat = 6";
             PreparedStatement konekStatement5 = KonekDatabase.getConnection().prepareStatement(prod5);
             
             
@@ -1887,7 +2008,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
-
     
     //mouse in and out for cart
     private void prod3cart1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart1MouseEntered
@@ -2054,73 +2174,152 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cartMouseClicked
         // TODO add your handling code here:
-        int jumlah = 0;
-        String prod = prod3name.getText();
-        String price = prod3price.getText();
-        jumlah += 1;
-        int harga = Integer.parseInt(price);
-        int mul;
-        String query = "Insert into transaksi (id_obat, nama_obat, jumlah_obat, harga_obat, total_bayar) values (?,?,?,?,?)";
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
         try {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
-            konekStatement.setString(1, "3");
-            konekStatement.setString(2, prod);
-            konekStatement.setString(3, String.valueOf(jumlah));
-            konekStatement.setString(4, price);
-            mul = jumlah * harga;
-            konekStatement.setString(5,String.valueOf(harga));
-            konekStatement.executeUpdate();
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
             JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
         } catch(SQLException e){
             e.printStackTrace();
         }
     }//GEN-LAST:event_prod3cartMouseClicked
+   
 
-    
-//set Barang transaksi
-    private void idprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idprodActionPerformed
+    private void generikTableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_generikTableComponentShown
         // TODO add your handling code here:
-        String prod = idprod.getText();
-        String name = jTextField5.getText();
-        DefaultTableModel model = (DefaultTableModel) transTable.getModel();
-        model.setRowCount(0);
-        
+    }//GEN-LAST:event_generikTableComponentShown
+  
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int harga = Integer.parseInt(jTextField6.getText());
+        int qty = Integer.parseInt(jTextField7.getText());
+        int total = harga * qty;
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        modeltransModel.addRow(new Object[]{jTextField5.getText(), harga, qty, total});
+        finaltotal = finaltotal + total;
+        String finaltotal1 = String.valueOf(finaltotal);
+        jTextField8.setText(finaltotal1);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:        
+        String nama = jTextField5.getText();
         try {
-            String query = "Select * from db_tubesPBO.obat where id_obat = " + prod;
-            String qr = "Selec * from obat where nama_obat like " + name;
+            String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
-            PreparedStatement ks = KonekDatabase.getConnection().prepareStatement(qr);
             ResultSet rs = konekStatement.executeQuery();
-            ResultSet res = ks.executeQuery();
-            //rs.next() ||
-            if (res.next()) {
-                
-               //idprod.setText(rs.getString(1));
+            if (rs.next()) {
+               idprod.setText(rs.getString(1));
                jTextField5.setText(rs.getString(2));
                jTextField6.setText(rs.getString(5));
                jTextField7.setText("1");
-               //jTextField5.setText(rs.getString(2));
-               //jTextField6.setText(rs.getString(5));
-               //jTextField7.setText("1");
             } else {
-               jTextField5.setText("");
+               idprod.setText("");
                jTextField6.setText("");
                jTextField7.setText("");
             }
-            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Test");
+            JOptionPane.showMessageDialog(null, "Barang Tidak Ada");
         }
         
-    }//GEN-LAST:event_idprodActionPerformed
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        // TODO add your handling code here:
+        jButton3.setBackground(new Color(204,255,204));
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        // TODO add your handling code here:
+        jButton3.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        modeltransModel.setRowCount(0);
+        finaltotal = 0;
+        jTextField8.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jButton1.setBackground(new Color(204,255,204));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String tgl = dformat.format(date);
+        String id = String.valueOf(sessionLogin.get_id());
+        try {
+            String query = "Insert into transaksi (id_user,tgl_transaksi,total_bayar) values (?,?,?)";
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            konekStatement.setString(1, id);
+            konekStatement.setString(2, tgl);
+            konekStatement.setString(3, jTextField8.getText());
+            konekStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Pembayaran Berhasil Dilakukan");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void menuDaftarTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuDaftarTransaksiMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(mainPanel, "daftartransak_panel");
+    }//GEN-LAST:event_menuDaftarTransaksiMouseClicked
+
+    private void daftartransaksi_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftartransaksi_labelMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(mainPanel, "daftartransak_panel");
+    }//GEN-LAST:event_daftartransaksi_labelMouseClicked
+
+    //tabel dftr transaksi
+    private void transTable1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_transTable1ComponentShown
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) transTable1.getModel();
+        model.setRowCount(0);
+        String id = String.valueOf(sessionLogin.get_id());
+        try {
+            String query = "Select * from transaksi where id = " + id;
+            PreparedStatement konek = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs = konek.executeQuery();
+            while (rs.next()){
+                String nama = rs.getString(2);
+                String stok = rs.getString(3);
+                String harga = rs.getString(4);
+                model.addRow(new Object[]{transTable1.getRowCount()+1, nama, stok, harga});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_transTable1ComponentShown
 
     //set kategori barang
-    private void generikTableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_generikTableComponentShown
+    private void barangTableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_barangTableComponentShown
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) generikTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) barangTable.getModel();
         model.setRowCount(0);
         try {
-            String query = "Select * from db_tubesPBO.obat where id_jenis_obat = 1";
+            String query = "Select * from db_tubesPBO.barang";
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
@@ -2132,20 +2331,157 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         } catch(SQLException e){
             e.printStackTrace();
         }
-    }//GEN-LAST:event_generikTableComponentShown
+    }//GEN-LAST:event_barangTableComponentShown
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void daftartransaki_panelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_daftartransaki_panelComponentShown
         // TODO add your handling code here:
-        int harga = Integer.parseInt(jTextField6.getText());
-        int qty = Integer.parseInt(jTextField7.getText());
-        int total = harga * qty;
-        DefaultTableModel model = (DefaultTableModel) transTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) transTable1.getModel();
         model.setRowCount(0);
-        model.addRow(new Object[]{jTextField5.getText(), harga, qty, total});
-        finaltotal = finaltotal + total;
-        String finaltotal1 = String.valueOf(finaltotal);
-        jTextField8.setText(finaltotal1);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String id = String.valueOf(sessionLogin.get_id());
+        try {
+            String query = "Select * from transaksi where id_user = "+ id;
+            PreparedStatement konek = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs = konek.executeQuery();
+            while (rs.next()){
+                String nama = rs.getString(2);
+                String stok = rs.getString(3);
+                String harga = rs.getString(4);
+                model.addRow(new Object[]{transTable1.getRowCount()+1, nama, stok, harga});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_daftartransaki_panelComponentShown
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        jButton2.setBackground(new Color(204,255,204));
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jButton2.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void prod3cart1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart1MouseClicked
+        // TODO add your handling code here:
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name1.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_prod3cart1MouseClicked
+
+    private void prod3cart2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart2MouseClicked
+        // TODO add your handling code here:
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name2.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_prod3cart2MouseClicked
+
+    private void prod3cart3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart3MouseClicked
+        // TODO add your handling code here:
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name3.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_prod3cart3MouseClicked
+
+    private void prod3cart4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart4MouseClicked
+        // TODO add your handling code here:
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name4.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_prod3cart4MouseClicked
+
+    private void prod3cart5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart5MouseClicked
+        // TODO add your handling code here:
+        this.modeltransModel = (DefaultTableModel) transTable.getModel();
+        String nama = prod3name5.getText();
+        String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+        try {
+            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+            ResultSet rs  = konekStatement.executeQuery();
+            if (rs.next()){
+                String prodName = rs.getString(2);
+                String harga = rs.getString(5);
+                String qty = String.valueOf(1);
+                int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+            }
+            JOptionPane.showMessageDialog(null, "Data berhasil dimasukan");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_prod3cart5MouseClicked
 
     
 
@@ -2306,6 +2642,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -2388,6 +2725,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tgllahiruser_panel;
     private javax.swing.JLabel tgllahiruser_profile;
     private javax.swing.JTable transTable;
+    private javax.swing.JTable transTable1;
     private javax.swing.JLabel transaksi_label;
     private javax.swing.JPanel transaksi_panel;
     // End of variables declaration//GEN-END:variables
