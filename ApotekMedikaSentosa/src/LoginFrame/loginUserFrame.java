@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package LoginFrame;
 
 import DashboardFrame.dashboardUserFrame;
@@ -20,10 +16,6 @@ import java.awt.Color;
  */
 public class loginUserFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BackFrame
-     */
-    
     public loginUserFrame() {
         initComponents();
     }
@@ -289,7 +281,7 @@ public class loginUserFrame extends javax.swing.JFrame {
     private void unameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_unameFieldFocusLost
         // TODO add your handling code here:
         if (unameField.getText().equals("")) {
-            unameField.setText("ENTER USERN AME");
+            unameField.setText("ENTER USERNAME");
             unameField.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_unameFieldFocusLost
@@ -335,20 +327,6 @@ public class loginUserFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(loginUserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package DashboardFrame;
 
 import Database.sessionLogin;
@@ -160,7 +156,7 @@ protected void kosong(){
 
         jLabelDashboard.setBackground(new java.awt.Color(255, 255, 204));
         jLabelDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDashboard.setText("DADHBOARD");
+        jLabelDashboard.setText("DASHBOARD");
         jLabelDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelDashboardMouseClicked(evt);
@@ -328,7 +324,7 @@ protected void kosong(){
         jPanelobat.setLayout(jPanelobatLayout);
         jPanelobatLayout.setHorizontalGroup(
             jPanelobatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 225, Short.MAX_VALUE)
             .addGroup(jPanelobatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelobatLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
@@ -337,7 +333,7 @@ protected void kosong(){
         );
         jPanelobatLayout.setVerticalGroup(
             jPanelobatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
             .addGroup(jPanelobatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelobatLayout.createSequentialGroup()
                     .addGap(12, 12, 12)

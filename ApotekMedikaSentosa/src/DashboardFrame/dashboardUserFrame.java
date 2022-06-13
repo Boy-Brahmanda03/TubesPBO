@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package DashboardFrame;
 
 import Database.KonekDatabase;
@@ -182,6 +178,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         daftartransaki_panel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         transTable1 = new javax.swing.JTable();
@@ -947,21 +944,21 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         generikTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Tanggal Kadaluarsa", "Harga"
+                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Stok", "Tanggal Kadaluarsa", "Harga"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -989,8 +986,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             generikTable.getColumnModel().getColumn(2).setPreferredWidth(100);
             generikTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             generikTable.getColumnModel().getColumn(4).setPreferredWidth(200);
-            generikTable.getColumnModel().getColumn(5).setPreferredWidth(200);
-            generikTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+            generikTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            generikTable.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout ObatGenerikLayout = new javax.swing.GroupLayout(ObatGenerik);
@@ -1019,21 +1016,21 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         herbalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Tanggal Kadaluarsa", "Harga"
+                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Stok", "Tanggal Kadaluarsa", "Harga"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1056,8 +1053,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             herbalTable.getColumnModel().getColumn(2).setPreferredWidth(100);
             herbalTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             herbalTable.getColumnModel().getColumn(4).setPreferredWidth(200);
-            herbalTable.getColumnModel().getColumn(5).setPreferredWidth(200);
-            herbalTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+            herbalTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            herbalTable.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout herbalLayout = new javax.swing.GroupLayout(herbal);
@@ -1090,21 +1087,21 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         langkaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Tanggal Kadaluarsa", "Harga"
+                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Stok", "Tanggal Kadaluarsa", "Harga"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1128,8 +1125,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             langkaTable.getColumnModel().getColumn(2).setPreferredWidth(100);
             langkaTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             langkaTable.getColumnModel().getColumn(4).setPreferredWidth(200);
-            langkaTable.getColumnModel().getColumn(5).setPreferredWidth(200);
-            langkaTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+            langkaTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            langkaTable.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout ObatLangkaLayout = new javax.swing.GroupLayout(ObatLangka);
@@ -1158,21 +1155,21 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
         suplemenTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Tanggal Kadaluarsa", "Harga"
+                "No", "Nama Obat", "Dosis", "Aturan Pakai", "Efek Samping", "Stok", "Tanggal Kadaluarsa", "Harga"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1195,8 +1192,8 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             suplemenTable.getColumnModel().getColumn(2).setPreferredWidth(100);
             suplemenTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             suplemenTable.getColumnModel().getColumn(4).setPreferredWidth(200);
-            suplemenTable.getColumnModel().getColumn(5).setPreferredWidth(200);
-            suplemenTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+            suplemenTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            suplemenTable.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         Suplemen.add(jScrollPane7, java.awt.BorderLayout.PAGE_START);
@@ -1457,6 +1454,10 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             }
         });
         transaksi_panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 110, -1));
+
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Obat", "Barang" }));
+        transaksi_panel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 120, 30));
 
         mainPanel.add(transaksi_panel, "keranjang_card");
 
@@ -1858,12 +1859,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
                 String nama = rs.getString(2);
+                String stok = rs.getString(4);
                 String harga = rs.getString(5);
                 String dosis = rs.getString(6);
                 String aturan = rs.getString(7);
                 String efek = rs.getString(8);
                 String exDate = rs.getString(9);
-                model.addRow(new Object[]{generikTable.getRowCount()+1, nama, dosis, aturan, efek, exDate, harga, null});
+                model.addRow(new Object[]{generikTable.getRowCount()+1, nama, dosis, aturan, efek, stok, exDate, harga});
             }
         } catch(SQLException e){
             e.printStackTrace();
@@ -1882,12 +1884,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
                 String nama = rs.getString(2);
+                String stok = rs.getString(4);
                 String harga = rs.getString(5);
                 String dosis = rs.getString(6);
                 String aturan = rs.getString(7);
                 String efek = rs.getString(8);
                 String exDate = rs.getString(9);
-                model.addRow(new Object[]{herbalTable.getRowCount()+1, nama, dosis, aturan, efek, exDate, harga, null});
+                model.addRow(new Object[]{herbalTable.getRowCount()+1, nama, dosis, aturan, efek, stok, exDate, harga});
             }
         } catch(SQLException e){
             e.printStackTrace();
@@ -1906,12 +1909,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
                 String nama = rs.getString(2);
+                String stok = rs.getString(4);
                 String harga = rs.getString(5);
                 String dosis = rs.getString(6);
                 String aturan = rs.getString(7);
                 String efek = rs.getString(8);
                 String exDate = rs.getString(9);
-                model.addRow(new Object[]{langkaTable.getRowCount()+1, nama, dosis, aturan, efek, exDate, harga, null});
+                model.addRow(new Object[]{langkaTable.getRowCount()+1, nama, dosis, aturan, efek, stok, exDate, harga});
             }
         } catch(SQLException e){
             e.printStackTrace();
@@ -1929,12 +1933,13 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             ResultSet rs = konekStatement.executeQuery();
             while (rs.next()){
                 String nama = rs.getString(2);
+                String stok = rs.getString(4);
                 String harga = rs.getString(5);
                 String dosis = rs.getString(6);
                 String aturan = rs.getString(7);
                 String efek = rs.getString(8);
                 String exDate = rs.getString(9);
-                model.addRow(new Object[]{suplemenTable.getRowCount()+1, nama, dosis, aturan, efek, exDate, harga, null});
+                model.addRow(new Object[]{suplemenTable.getRowCount()+1, nama, dosis, aturan, efek, stok, exDate, harga});
             }
         } catch(SQLException e){
             e.printStackTrace();
@@ -2205,31 +2210,66 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int harga = Integer.parseInt(jTextField6.getText());
         int qty = Integer.parseInt(jTextField7.getText());
+        int id = Integer.parseInt(idprod.getText());
         int total = harga * qty;
-        this.modeltransModel = (DefaultTableModel) transTable.getModel();
-        modeltransModel.addRow(new Object[]{jTextField5.getText(), harga, qty, total});
-        finaltotal = finaltotal + total;
-        String finaltotal1 = String.valueOf(finaltotal);
-        jTextField8.setText(finaltotal1);
+        int val = 0;
+        Pembelian pb = new Pembelian();
+        String item = jComboBox1.getSelectedItem().toString();
+        if (item.equals("Obat")) {
+            val = pb.beli(qty, id);  
+        } 
+        else if (item.equals("Barang")) {
+            val = pb.beli(qty, jTextField5.getText());   
+        }
+        
+        if (val == 0) {
+                //do nothing
+        } else {
+                this.modeltransModel = (DefaultTableModel) transTable.getModel();
+                modeltransModel.addRow(new Object[]{jTextField5.getText(), harga, qty, total});
+                finaltotal = finaltotal + total;
+                String finaltotal1 = String.valueOf(finaltotal);
+                jTextField8.setText(finaltotal1);
+        }   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:        
         String nama = jTextField5.getText();
+        String item = jComboBox1.getSelectedItem().toString();
         try {
-            String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
-            PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
-            ResultSet rs = konekStatement.executeQuery();
-            if (rs.next()) {
-               idprod.setText(rs.getString(1));
-               jTextField5.setText(rs.getString(2));
-               jTextField6.setText(rs.getString(5));
-               jTextField7.setText("1");
-            } else {
-               idprod.setText("");
-               jTextField6.setText("");
-               jTextField7.setText("");
+            if (item.equals("Obat")) {
+                String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
+                PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+                ResultSet rs =konekStatement.executeQuery();
+                if (rs.next()) {
+                    idprod.setText(rs.getString(1));
+                    jTextField5.setText(rs.getString(2));
+                    jTextField6.setText(rs.getString(4));
+                    jTextField7.setText("1");
+                } else {
+                   idprod.setText("");
+                   jTextField6.setText("");
+                   jTextField7.setText("");
+                }
             }
+            else if (item.equals("Barang")) {
+                String query = "Select * from db_tubesPBO.barang where nama_barang like '"+nama+"%'";
+                PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
+                ResultSet rs =konekStatement.executeQuery();
+                if (rs.next()) {
+                    idprod.setText(rs.getString(1));
+                    jTextField5.setText(rs.getString(2));
+                    jTextField6.setText(rs.getString(4));
+                    jTextField7.setText("1");
+                } else {
+                   idprod.setText("");
+                   jTextField6.setText("");
+                   jTextField7.setText("");
+                }
+            }
+
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Barang Tidak Ada");
         }
@@ -2251,6 +2291,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         modeltransModel.setRowCount(0);
         finaltotal = 0;
         jTextField8.setText("");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
@@ -2276,6 +2317,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             konekStatement.setString(2, tgl);
             konekStatement.setString(3, jTextField8.getText());
             konekStatement.executeUpdate();
+            
             JOptionPane.showMessageDialog(null, "Pembayaran Berhasil Dilakukan");
         } catch (Exception e) {
             e.printStackTrace();
@@ -2303,10 +2345,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konek = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konek.executeQuery();
             while (rs.next()){
-                String nama = rs.getString(2);
-                String stok = rs.getString(3);
+                String tgl = rs.getString(3);
                 String harga = rs.getString(4);
-                model.addRow(new Object[]{transTable1.getRowCount()+1, nama, stok, harga});
+                model.addRow(new Object[]{transTable1.getRowCount()+1, tgl, harga});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -2343,10 +2384,9 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konek = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs = konek.executeQuery();
             while (rs.next()){
-                String nama = rs.getString(2);
-                String stok = rs.getString(3);
+                String tgl = rs.getString(3);
                 String harga = rs.getString(4);
-                model.addRow(new Object[]{transTable1.getRowCount()+1, nama, stok, harga});
+                model.addRow(new Object[]{transTable1.getRowCount()+1, tgl, harga});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -2512,36 +2552,6 @@ public class dashboardUserFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2609,6 +2619,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
