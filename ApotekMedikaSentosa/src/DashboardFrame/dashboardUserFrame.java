@@ -13,6 +13,9 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 /**
  *
@@ -359,6 +362,11 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 prod3cartMouseExited(evt);
+            }
+        });
+        prod3cart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prod3cartActionPerformed(evt);
             }
         });
 
@@ -2245,7 +2253,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
                 if (rs.next()) {
                     idprod.setText(rs.getString(1));
                     jTextField5.setText(rs.getString(2));
-                    jTextField6.setText(rs.getString(4));
+                    jTextField6.setText(rs.getString(5));
                     jTextField7.setText("1");
                 } else {
                    idprod.setText("");
@@ -2288,10 +2296,25 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //modeltransModel.getRowCount()+1;
+        Vector<Object> vec = new Vector<Object>();
+        ArrayList<String> al = new ArrayList<String>();
+        for (int i = 0; i < modeltransModel.getRowCount(); i++) {
+            vec.add(i, modeltransModel.getDataVector().elementAt(i).elementAt(2));
+        }
+        Iterator<Object> itr = vec.iterator();
+        while (itr.hasNext()) {            
+            al.add(0,itr.next().toString());
+        }
+        
+        String qty = al.add);
+        System.out.println(al);
+        System.out.println(vec);
         modeltransModel.setRowCount(0);
         finaltotal = 0;
         jTextField8.setText("");
-        
+        //tambahin misalnya batal
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
@@ -2320,7 +2343,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Pembayaran Berhasil Dilakukan");
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Transaksi Masih Kosong");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -2405,6 +2428,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cart1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart1MouseClicked
         // TODO add your handling code here:
+        Pembelian pb = new Pembelian();
         this.modeltransModel = (DefaultTableModel) transTable.getModel();
         String nama = prod3name1.getText();
         String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
@@ -2412,10 +2436,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs  = konekStatement.executeQuery();
             if (rs.next()){
+                int id = rs.getInt(1);
                 String prodName = rs.getString(2);
                 String harga = rs.getString(5);
                 String qty = String.valueOf(1);
                 int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                pb.beli(Integer.parseInt(qty),id);
                 modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
                 finaltotal = finaltotal + total;
                 String finaltotal1 = String.valueOf(finaltotal);
@@ -2429,6 +2455,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cart2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart2MouseClicked
         // TODO add your handling code here:
+        Pembelian pb = new Pembelian();
         this.modeltransModel = (DefaultTableModel) transTable.getModel();
         String nama = prod3name2.getText();
         String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
@@ -2436,10 +2463,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs  = konekStatement.executeQuery();
             if (rs.next()){
+                int id = rs.getInt(1);
                 String prodName = rs.getString(2);
                 String harga = rs.getString(5);
                 String qty = String.valueOf(1);
                 int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                pb.beli(Integer.parseInt(qty),id);
                 modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
                 finaltotal = finaltotal + total;
                 String finaltotal1 = String.valueOf(finaltotal);
@@ -2453,6 +2482,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cart3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart3MouseClicked
         // TODO add your handling code here:
+        Pembelian pb = new Pembelian();
         this.modeltransModel = (DefaultTableModel) transTable.getModel();
         String nama = prod3name3.getText();
         String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
@@ -2460,10 +2490,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs  = konekStatement.executeQuery();
             if (rs.next()){
+                int id = rs.getInt(1);
                 String prodName = rs.getString(2);
                 String harga = rs.getString(5);
                 String qty = String.valueOf(1);
                 int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                pb.beli(Integer.parseInt(qty),id);
                 modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
                 finaltotal = finaltotal + total;
                 String finaltotal1 = String.valueOf(finaltotal);
@@ -2477,6 +2509,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cart4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart4MouseClicked
         // TODO add your handling code here:
+        Pembelian pb = new Pembelian();
         this.modeltransModel = (DefaultTableModel) transTable.getModel();
         String nama = prod3name4.getText();
         String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
@@ -2484,10 +2517,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs  = konekStatement.executeQuery();
             if (rs.next()){
+                int id = rs.getInt(1);
                 String prodName = rs.getString(2);
                 String harga = rs.getString(5);
                 String qty = String.valueOf(1);
                 int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                pb.beli(Integer.parseInt(qty),id);
                 modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
                 finaltotal = finaltotal + total;
                 String finaltotal1 = String.valueOf(finaltotal);
@@ -2501,6 +2536,7 @@ public class dashboardUserFrame extends javax.swing.JFrame {
 
     private void prod3cart5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod3cart5MouseClicked
         // TODO add your handling code here:
+        Pembelian pb = new Pembelian();
         this.modeltransModel = (DefaultTableModel) transTable.getModel();
         String nama = prod3name5.getText();
         String query = "Select * from db_tubesPBO.obat where nama_obat like '"+nama+"%'";
@@ -2508,10 +2544,12 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             PreparedStatement konekStatement = KonekDatabase.getConnection().prepareStatement(query);
             ResultSet rs  = konekStatement.executeQuery();
             if (rs.next()){
+                int id = rs.getInt(1);
                 String prodName = rs.getString(2);
                 String harga = rs.getString(5);
                 String qty = String.valueOf(1);
                 int total = Integer.parseInt(harga) * Integer.parseInt(qty);
+                pb.beli(Integer.parseInt(qty),id);
                 modeltransModel.addRow(new Object[]{prodName, harga, qty, total});
                 finaltotal = finaltotal + total;
                 String finaltotal1 = String.valueOf(finaltotal);
@@ -2522,6 +2560,10 @@ public class dashboardUserFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_prod3cart5MouseClicked
+
+    private void prod3cartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prod3cartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prod3cartActionPerformed
 
     
 

@@ -28,12 +28,11 @@ public class Pembelian {
             ResultSet rs  = ps.executeQuery();
             if (rs.next()) {
                 stok = rs.getInt(4);
-                qty = 1;
                 if (qty > stok) {
                     JOptionPane.showMessageDialog(null, "Stok kurang");
                     val = 0;
                 } else {
-                    int jml = stok - 1;
+                    int jml = stok - qty;
                     System.out.println(jml);
                     String update = "UPDATE obat set stok_obat = ? where id_obat ='"+stId+"'";;
                     PreparedStatement ps1 = KonekDatabase.getConnection().prepareStatement(update);
@@ -60,14 +59,13 @@ public class Pembelian {
             if (rs.next()) {
                 stok = rs.getInt(3);
                 id = rs.getString(1);
-                qty = 1;
                 if (qty > stok) {
                     JOptionPane.showMessageDialog(null, "Stok kurang");
                     val = 0;
                 } else {
                     String update = "Update barang set stok_barang = ? where id_barang = " + id;
                     PreparedStatement ps1 = KonekDatabase.getConnection().prepareStatement(update);
-                    int jml = stok - 1;
+                    int jml = stok - qty;
                     ps1.setString(1, String.valueOf(jml));
                     ps1.executeUpdate();
                     val = 1;
